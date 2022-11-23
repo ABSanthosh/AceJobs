@@ -1,4 +1,5 @@
 import FancyButton from "../Components/FancyButton/FancyButton";
+import Footer from "../Components/Footer/Footer";
 import Header from "../Components/Header/Header";
 import JobCategoryBox from "../Components/JobCategoryBox/JobCategoryBox";
 import "../styles/routes/Home.scss";
@@ -57,6 +58,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }
