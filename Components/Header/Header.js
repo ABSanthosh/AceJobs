@@ -1,19 +1,38 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import "./Header.scss";
 import useAuth from "../../hooks/useAuth";
 import Link from "next/link";
 import SearchBar from "../SearchBar/SearchBar";
 
 function Header() {
-  const [navState, setNavState] = React.useState(false);
-  const [hash, setHash] = React.useState("");
+  const [navState, setNavState] = useState(false);
+  const [hash, setHash] = useState("");
   const { user } = useAuth();
 
-  React.useEffect(() => {
+  useEffect(() => {
     window.addEventListener("hashchange", () => {
       setHash(window.location.hash);
     });
   }, []);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 1) {
+        document.querySelector(".HeaderWrapper").style.height = "70px";
+      } else {
+        document.querySelector(".HeaderWrapper").style.height = "";
+      }
+    });
+
+    window.addEventListener("hashchange", () => {
+      setHash(window.location.hash);
+    });
+
+    return () => {
+      window.removeEventListener("scroll", () => {});
+      window.removeEventListener("hashchange", () => {});
+    };
+  });
 
   return (
     <div className="HeaderWrapper">

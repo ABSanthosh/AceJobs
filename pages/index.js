@@ -1,5 +1,6 @@
 import FancyButton from "../Components/FancyButton/FancyButton";
 import Header from "../Components/Header/Header";
+import JobCategoryBox from "../Components/JobCategoryBox/JobCategoryBox";
 import "../styles/routes/Home.scss";
 
 export default function Home() {
@@ -42,6 +43,18 @@ export default function Home() {
             className="HeroSection__right--heroImage"
             src="/Img/HeroImage.svg"
           />
+        </div>
+      </section>
+      <section className="CategorySection">
+        <div className="CategorySection__content">
+          <h2>Most Demanded Job Categories</h2>
+          <div className="CategorySection__content--listing">
+            <JobCategoryBox href="jobs/category/design" title="Design" subTitle="938 New Jobs" />
+            <JobCategoryBox href="jobs/category/design" title="Design" subTitle="938 New Jobs" />
+            <JobCategoryBox href="jobs/category/design" title="Design" subTitle="938 New Jobs" />
+            <JobCategoryBox href="jobs/category/design" title="Design" subTitle="938 New Jobs" />
+            <JobCategoryBox href="jobs/category" title="Find More" type="find" subTitle="938 New Jobs" />
+          </div>
         </div>
       </section>
     </div>

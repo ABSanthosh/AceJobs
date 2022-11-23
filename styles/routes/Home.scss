@@ -16,7 +16,8 @@
     }
 
     @include respondAt(1016px) {
-      height: 430px;
+      // height: 430px;
+      height: 510px;
     }
     @include respondAt(840px) {
       height: auto;
@@ -57,7 +58,7 @@
         transform: rotate(180deg);
         height: 80%;
         @include respondAt(1016px) {
-          height: 90%;
+          height: 83%;
         }
       }
     }
@@ -122,6 +123,36 @@
       @include respondAt(445px) {
         a {
           flex-grow: 1;
+        }
+      }
+    }
+  }
+
+  .CategorySection {
+    @include box(100vw, auto);
+    min-height: 480px;
+    @include make-flex();
+    background-color: #f6f6f6;
+
+    &__content {
+      @include box();
+      @include make-flex($align: flex-start);
+      max-width: calc(1152px + 40px);
+      gap: 20px;
+      padding: 40px 20px;
+
+      h2 {
+        font-size: 35px;
+      }
+
+      &--listing {
+        @include box(100%, 250px);
+        @include make-flex($dir: row, $just: flex-start);
+        gap: 25px;
+        flex-wrap: wrap;
+
+        @include respondAt(1090px) {
+          height: auto;
         }
       }
     }

@@ -1,0 +1,39 @@
+.JobCategoryBox {
+  @include box(190px, 190px);
+  border-radius: 10px;
+  flex-grow: 1;
+  a {
+    @include box();
+    padding: 20px;
+    color: white;
+    @include make-flex($align: flex-start, $just: flex-end);
+    gap: 10px;
+
+    span {
+      &:first-child {
+        font-size: 22px;
+        font-weight: 600;
+      }
+    }
+  }
+
+  &--find {
+    background-color: #e9eaea;
+    a {
+      @include make-flex();
+      color: #15222c;
+      span {
+        font-size: 22px;
+        font-weight: 600;
+
+      }
+      img {
+        height: 55px;
+      }
+    }
+  }
+
+  &--active {
+    background-color: #15222c;
+  }
+}
