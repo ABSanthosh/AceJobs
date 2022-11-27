@@ -4,6 +4,7 @@ import { AuthProvider, getUserFromSession } from "../context/authContext";
 import App from "next/app";
 import Head from "next/head";
 import { NextIntlProvider } from "next-intl";
+import LanguageModal from "../Components/LanguageModal/LanguageModal";
 
 function MyApp({ Component, pageProps, user }) {
   return (
@@ -15,6 +16,7 @@ function MyApp({ Component, pageProps, user }) {
           <link rel="icon" href="/Img/logo.svg" />
         </Head>
         <AuthModal />
+        <LanguageModal />
         <Component {...pageProps} />
       </NextIntlProvider>
     </AuthProvider>

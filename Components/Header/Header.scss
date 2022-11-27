@@ -20,8 +20,12 @@
 
   &__logo {
     list-style: none;
-    @include box(auto, 44px);
+    @include box(auto, 40px);
     display: none;
+    margin-left: 10px;
+    img{
+      @include box();
+    }
     @include respondAt(915px) {
       display: block;
     }
@@ -87,7 +91,6 @@
       gap: 20px;
       font-size: 17px;
       @include box(auto);
-      list-style: none;
       @include make-flex($just: space-between, $dir: row);
 
       @include respondAt(915px) {

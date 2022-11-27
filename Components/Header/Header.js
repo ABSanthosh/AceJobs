@@ -11,13 +11,18 @@ function Header() {
   const [hash, setHash] = useState("");
   const { user } = useAuth();
   const router = useRouter();
-  const { pathname, asPath, query } = router;
+  const { pathname, asPath, query, locale } = router;
+  const [localLocale, setLocalLocale] = useState(locale);
 
   useEffect(() => {
     window.addEventListener("hashchange", () => {
       setHash(window.location.hash);
     });
   }, []);
+
+  useEffect(() => {
+    setLocalLocale(locale);
+  }, [locale]);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -37,9 +42,6 @@ function Header() {
       window.removeEventListener("hashchange", () => {});
     };
   });
-
-  // Language
-  //
 
   return (
     <nav className="HeaderWrapper">
@@ -69,8 +71,9 @@ function Header() {
           <li className="HeaderWrapper__MenuList--item">
             <SearchBar />
           </li>
-          <li>
+          <li className="HeaderWrapper__MenuList--item">
             <FancySelect
+              defaultValue={localLocale}
               onChange={(locale) => {
                 router.push({ pathname, query }, asPath, { locale: locale });
               }}
