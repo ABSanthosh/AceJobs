@@ -1,0 +1,31 @@
+.JobPage {
+  @include make-flex($dir: column, $just: flex-start);
+  @include box($height: unset);
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &__main {
+    @include box(100vw, 580px);
+    max-width: 1152px;
+    position: relative;
+    margin-top: 123px;
+    @include make-flex($dir: row, $just: flex-start);
+
+    @include respondAt(1518px) {
+      width: 90vw;
+    }
+
+    @include respondAt(1016px) {
+      // height: 430px;
+      height: 510px;
+    }
+    @include respondAt(840px) {
+      height: auto;
+      min-height: 600px;
+    }
+
+    @include respondAt(915px) {
+      margin-top: 80px;
+    }
+  }
+}

@@ -3,7 +3,7 @@ import "./FancyButton.scss";
 
 function FancyButton({
   children,
-  className,
+  className = "",
   isLink = false,
   href = "",
   ...props

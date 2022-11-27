@@ -1,37 +1,50 @@
 .AuthModal {
-  @include make-flex($just: flex-start);
+  @include make-flex($just: flex-start, $align: flex-end);
   @include box(100vw, 100vh);
   position: fixed;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.49);
-  backdrop-filter: blur(15px);
+  // background: rgba(0, 0, 0, 0.49);
   z-index: 11;
-  padding-top: 70px;
-
+  padding-top: 35px;
+  padding-right: 35px;
   @include respondAt(620px) {
     padding: 10px;
   }
   &__container {
-    gap: 10px;
     position: relative;
-    min-height: 450px;
+    // min-height: 450px;
     border-radius: 7px;
     @include make-flex($just: flex-start);
-    @include box(600px, auto);
-    border: 1px solid #cafa0a;
-    background-color: #0f1621;
+    @include box(320px, auto);
+    border: 1.5px solid #93b8e9;
+    background-color: white;
 
     @include respondAt(400px) {
       min-height: 400px;
     }
 
+    &--header {
+      @include box(100%, 45px);
+      @include make-flex($dir: row, $just: space-between);
+      padding: 13px 6px 13px 13px;
+      border-bottom: 1.5px solid #93b8e9;
+
+      p {
+        color: #202124;
+        font-size: 14px;
+      }
+    }
+
     &--close {
-      position: absolute;
-      top: 20px;
-      right: 22px;
-      font-size: 30px;
+      border-left: 1.5px solid #93b8e9;
+      @include box(35px, 35px);
+      @include make-flex();
+      font-size: 25px;
+      padding-left: 4px;
       cursor: pointer;
+      color: #5f6368;
+      // @include box(24px);
 
       &:hover {
         color: #fe5349;
@@ -42,88 +55,72 @@
       }
     }
 
+    &--resendOtp {
+      @include box($height: auto);
+      padding: 20px;
+      @include make-flex($dir: row);
+      gap: 10px;
+
+      span {
+        color: #68a3f0;
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
     @include respondAt(620px) {
       @include box($height: auto);
     }
   }
 
-  h2 {
-    font-size: 54px;
-    text-align: center;
-    width: 100%;
-    line-height: 90px;
+  &__containerBody {
+    @include box();
+    @include make-flex($just: flex-start);
+    padding: 20px;
+    gap: 25px;
+    &--phoneInput {
+      @include box($height: 33px);
+      border-radius: 4px;
+      background-color: #ffffff;
+      color: #b0b6bb;
+      border: 1.5px solid #dddddd;
+      font-family: "Lato", sans-serif;
+      font-size: 15px;
+      padding: 6px 10px;
 
-    @include respondAt(400px) {
-      font-size: 40px;
-      line-height: 70px;
-    }
-  }
-  &__tabs {
-    font-size: 15px;
-    @include make-flex($dir: row, $just: flex-start);
-    @include box(100%, auto);
-    padding: 0 30px;
-    flex-wrap: wrap;
-    gap: 30px;
-
-    @include respondAt(400px) {
-      font-size: 12px;
-    }
-
-    a {
-      z-index: 1;
-      @include respondAt(450px) {
-        flex-grow: 1;
-        text-align: center;
-      }
-      p {
-        padding: 8px 10px 5px 10px;
-        position: relative;
-        @include respondAt(915px) {
-          width: 100%;
-        }
-        background-color: #0f1621;
-        border: 1px dashed #cafa0a;
-
-        &:before {
-          z-index: -1;
-          @include box();
-          content: "";
-          position: absolute;
-          border: 1px dashed #ffffff;
-          bottom: -5px;
-          right: -5px;
-        }
-        &:hover {
-          background-color: #cafa0a;
-          color: #0f1621;
-          border: 1px solid #cafa0a;
-
-          &:before {
-            z-index: -1;
-            border: 1px solid #ffffff;
-            @include box();
-            content: "";
-            position: absolute;
-            background-color: #ffffff;
-            bottom: -5px;
-            right: -5px;
-          }
-        }
+      &:focus-visible {
+        outline: none;
       }
     }
-    .route--active p {
-      background-color: #cafa0a;
-      color: #0f1621;
+    &--row {
+      @include make-flex($align: flex-start);
+      @include box(100%, auto);
+      color: #202124;
+      gap: 10px;
 
-      &:before {
-        z-index: -1;
-        @include box();
-        content: "";
-        position: absolute;
-        background-color: #ffffff;
-        bottom: -5px;
-        right: -5px;
+      label {
+        font-size: 16px;
+      }
+
+      .pincode-input-container {
+        @include box($height: auto);
+        @include make-flex($dir: row);
+      }
+    }
+
+    &--errorMsg {
+      color: #fe5349 !important;
+      font-size: 15px !important;
+      font-family: "Roboto", sans-serif !important;
+      display: flex !important;
+      @include make-flex($dir: row, $just: flex-start);
+      gap: 5px;
+      @include box(100%, auto);
+
+      &::before {
+        font-size: 15px !important;
       }
     }
   }
