@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="FooterWrapper__left">
           <img
             className="FooterWrapper__left--logo"
-            src="/Img/logo-white.svg"
+            src="/Img/logos/logo-text-white.svg"
           />
 
           <p className="FooterWrapper__left--copyrightUnderLogo">

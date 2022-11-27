@@ -3,11 +3,15 @@ import "./Header.scss";
 import useAuth from "../../hooks/useAuth";
 import Link from "next/link";
 import SearchBar from "../SearchBar/SearchBar";
+import FancySelect from "../FancySelect/FancySelect";
+import { useRouter } from "next/router";
 
 function Header() {
   const [navState, setNavState] = useState(false);
   const [hash, setHash] = useState("");
   const { user } = useAuth();
+  const router = useRouter();
+  const { pathname, asPath, query } = router;
 
   useEffect(() => {
     window.addEventListener("hashchange", () => {
@@ -34,11 +38,14 @@ function Header() {
     };
   });
 
+  // Language
+  //
+
   return (
-    <div className="HeaderWrapper">
+    <nav className="HeaderWrapper">
       <Link href="/">
         <a className="HeaderWrapper__logo">
-          <img src="/Img/logo.svg" />
+          <img src="/Img/logos/logo.svg" />
         </a>
       </Link>
       <div
@@ -50,7 +57,7 @@ function Header() {
           <li className="HeaderWrapper__MenuList--logo">
             <Link href="/">
               <a>
-                <img src="/Img/logo.svg" />
+                <img src="/Img/logos/logo.svg" />
               </a>
             </Link>
           </li>
@@ -61,6 +68,17 @@ function Header() {
           </li>
           <li className="HeaderWrapper__MenuList--item">
             <SearchBar />
+          </li>
+          <li>
+            <FancySelect
+              onChange={(locale) => {
+                router.push({ pathname, query }, asPath, { locale: locale });
+              }}
+              options={[
+                { value: "en", label: "English" },
+                { value: "hi", label: "हिंदी" },
+              ]}
+            />
           </li>
         </ul>
       </div>
@@ -80,7 +98,7 @@ function Header() {
           </label>
         </div>
       </div>
-    </div>
+    </nav>
   );
 }
 

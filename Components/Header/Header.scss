@@ -76,6 +76,7 @@
     &--logo {
       list-style: none;
       left: 0;
+      margin-left: 10px;
       @include respondAt(915px) {
         display: none;
       }
@@ -86,7 +87,7 @@
       gap: 20px;
       font-size: 17px;
       @include box(auto);
-
+      list-style: none;
       @include make-flex($just: space-between, $dir: row);
 
       @include respondAt(915px) {
