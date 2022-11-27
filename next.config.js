@@ -1,7 +1,16 @@
 /** @type {import('next').NextConfig} */
-const path = require('path');
+const path = require("path");
 
 const nextConfig = {
+  i18n: {
+    locales: ["en", "hi", "te", "ml"],
+    // hi - hindi
+    // te - telugu
+    // ta - tamil
+    // ml - malayalam
+    defaultLocale: "en",
+    localeDetection: false,
+  },
   reactStrictMode: true,
   swcMinify: true,
   webpack(config) {

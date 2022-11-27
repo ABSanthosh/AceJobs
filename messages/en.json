@@ -1,0 +1,25 @@
+{
+  "Home": {
+    "HeroSection": {
+      "title": {
+        "paragraph": "Finding the right job for",
+        "span": "You!"
+      },
+      "description": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sollicitudin sagittis risus, vitae tempus augue. Integer quis ultricies libero. Morbi malesuada nulla mauris, ac pretium leovenenatis viverra. Nunc accumsan ornare est, vel fringilla lectus porttitor at Clas.",
+      "FancyButtons": {
+        "semiSkilled": "Semi-Skilled jobs",
+        "skilled": "Skilled jobs"
+      }
+    },
+    "CategorySection": {
+      "title": "Most Demanded Job Categories",
+      "JobCategoryBox": {
+        "one": { "title": "Driver", "listings": "{count} New Jobs" },
+        "two": { "title": "Electrician", "listings": "{count} New Jobs" },
+        "three": { "title": "Carpenter", "listings": "{count} New Jobs" },
+        "four": { "title": "Plumber", "listings": "{count} New Jobs" },
+        "final": { "title": "Find More" }
+      }
+    }
+  }
+}
