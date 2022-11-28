@@ -3,7 +3,6 @@ import useAuth from "../../hooks/useAuth";
 import "../../styles/routes/My/My.scss";
 
 export function getServerSideProps(context) {
-  console.log(context.req);
   if (context.req.session.user === undefined) {
     return {
       redirect: {
@@ -18,7 +17,6 @@ export function getServerSideProps(context) {
 }
 export default function Demo({ user }) {
   const { logout } = useAuth();
-  
 
   return (
     <main>
@@ -26,8 +24,7 @@ export default function Demo({ user }) {
       {user !== null && (
         <button
           onClick={() => {
-            logout()
-
+            logout();
           }}
         >
           Logout
