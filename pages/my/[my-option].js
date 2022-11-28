@@ -18,11 +18,21 @@ export function getServerSideProps(context) {
 }
 export default function Demo({ user }) {
   const { logout } = useAuth();
+  
 
   return (
     <main>
-      {user !== null ? <p>Hello {user.email}</p> : <a href="#login">Login</a>}
-      {user !== null && <button onClick={logout}>Logout</button>}
+      {user !== null ? <p>Hello {user.phone}</p> : <a href="#login">Login</a>}
+      {user !== null && (
+        <button
+          onClick={() => {
+            logout()
+
+          }}
+        >
+          Logout
+        </button>
+      )}
     </main>
   );
 }

@@ -1,7 +1,9 @@
 import { withIronSessionSsr } from "iron-session/next";
 import React from "react";
 import { ironOptions } from "../lib/ironOptions";
-import { loginEndPoint } from "../operations/auth.fetch";
+import { getAuth, signOut } from "firebase/auth";
+
+const fbAuth = getAuth();
 
 export const AuthContext = React.createContext({});
 
@@ -18,6 +20,7 @@ export function AuthProvider({ children, ssrUser, ...props }) {
   const [user, setUser] = React.useState(ssrUser);
 
   async function logout() {
+    signOut(fbAuth);
     return fetch("/api/auth/logout", {
       method: "GET",
     })
