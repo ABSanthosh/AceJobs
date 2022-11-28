@@ -6,12 +6,13 @@ function FancyButton({
   className = "",
   isLink = false,
   href = "",
+  innerRef = null,
   ...props
 }) {
   if (isLink) {
     return (
       <Link href={href}>
-        <a className={`FancyButton ${className}`} {...props}>
+        <a className={`FancyButton ${className}`} ref={innerRef} {...props}>
           {children}
         </a>
       </Link>
@@ -19,7 +20,7 @@ function FancyButton({
   }
 
   return (
-    <button className={`FancyButton ${className}`} {...props}>
+    <button className={`FancyButton ${className}`} ref={innerRef} {...props}>
       {children}
     </button>
   );

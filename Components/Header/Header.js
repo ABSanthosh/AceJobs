@@ -5,6 +5,7 @@ import Link from "next/link";
 import SearchBar from "../SearchBar/SearchBar";
 import FancySelect from "../FancySelect/FancySelect";
 import { useRouter } from "next/router";
+import FancyButton from "../FancyButton/FancyButton";
 
 function Header() {
   const [navState, setNavState] = useState(false);
@@ -82,6 +83,15 @@ function Header() {
                 { value: "hi", label: "हिंदी" },
               ]}
             />
+          </li>
+          <li className="HeaderWrapper__MenuList--item">
+            <FancyButton
+              style={{ height: "33px" }}
+              isLink={true}
+              href={!user ? "#login" : "/my/profile"}
+            >
+              {user ? "Profile" : "Login"}
+            </FancyButton>
           </li>
         </ul>
       </div>

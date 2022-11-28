@@ -1,21 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./AuthModal.scss";
 import { useRouter } from "next/router";
 import PinInput from "react-pin-input";
 import FancyButton from "../FancyButton/FancyButton";
 import BlurredSpinner from "../BlurredSpinner/BlurredSpinner";
 
+// FireBase
+import { firebaseApp } from "../../firebase/firebaseInit";
+import firebase from "firebase/compat/app";
+import {
+  getAuth,
+  RecaptchaVerifier,
+  signInWithPhoneNumber,
+} from "firebase/auth";
+import useAuth from "../../hooks/useAuth";
+import { getUserInAPI } from "../../operations/auth.fetch";
+
 export default function AuthModal() {
   const [hash, setHash] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
 
-  const [isOtpSent, setIsOtpSent] = useState(true);
+  const [isOtpSent, setIsOtpSent] = useState(false);
   const [phoneNumberError, setPhoneNumberError] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [otpError, setOtpError] = useState("");
   const [showLoader, setShowLoader] = useState(false);
+  const buttonRef = useRef(null);
 
-  React.useEffect(() => {
+  const { setUser } = useAuth();
+
+  const auth = getAuth();
+  useEffect(() => {
     setHash(window.location.hash);
 
     if (
@@ -40,11 +56,14 @@ export default function AuthModal() {
     });
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (isOpen) {
       document.getElementsByTagName("body")[0].style.overflow = "hidden";
     } else {
       document.getElementsByTagName("body")[0].style.overflow = "auto";
+      setHash("");
+      window.location.hash = "";
+      router.replace(window.location.pathname);
     }
   }, [isOpen]);
 
@@ -53,6 +72,16 @@ export default function AuthModal() {
       {isOpen && (
         <div className="AuthModal">
           <div className="AuthModal__container">
+            <div
+              id="reCaptchaContainer"
+              style={{
+                position: "absolute",
+                top: "0",
+                left: "0",
+                maxWidth: "100%",
+                maxHeight: "100%",
+              }}
+            />
             {showLoader && (
               <BlurredSpinner
                 style={{
@@ -66,10 +95,10 @@ export default function AuthModal() {
               <span
                 className="AuthModal__container--close"
                 onClick={() => {
-                  // setIsOpen(false);
-                  // setHash("");
-                  // window.location.hash = "";
-                  // router.replace(window.location.pathname);
+                  setIsOpen(false);
+                  setHash("");
+                  window.location.hash = "";
+                  router.replace(window.location.pathname);
                 }}
               >
                 &#10799;
@@ -78,8 +107,33 @@ export default function AuthModal() {
             <div className="AuthModal__containerBody">
               <form
                 className="AuthModal__containerBody--row"
-                onSubmit={(e) => {
+                onSubmit={async (e) => {
                   e.preventDefault();
+                  setShowLoader(true);
+
+                  window.recaptchaVerifier = new RecaptchaVerifier(
+                    "reCaptchaContainer",
+                    {
+                      size: "invisible",
+                      callback: async (response) => {
+                        window.appVerifierResponse = response;
+                      },
+                    },
+                    auth
+                  );
+                  try {
+                    const confirmationResult = await signInWithPhoneNumber(
+                      auth,
+                      `+91-${phoneNumber}`,
+                      window.recaptchaVerifier
+                    );
+                    window.confirmationResult = confirmationResult;
+                    setIsOtpSent(true);
+                    setShowLoader(false);
+                  } catch (error) {
+                    setOtpError(error.message);
+                    setShowLoader(false);
+                  }
                 }}
               >
                 <label htmlFor="phone">Phone Number</label>
@@ -88,13 +142,19 @@ export default function AuthModal() {
                   type="text"
                   name="phone"
                   id="phone"
+                  onChange={(e) => {
+                    setPhoneNumber(e.target.value);
+                  }}
                   required
                 />
+
                 <FancyButton
+                  innerRef={buttonRef}
                   style={{
                     width: "100%",
                     height: "33px",
                   }}
+                  type="submit"
                 >
                   Send OTP
                 </FancyButton>
@@ -129,7 +189,50 @@ export default function AuthModal() {
                       justifyContent: "space-between",
                     }}
                     onComplete={async (value) => {
-                      console.log(value);
+                      setShowLoader(true);
+                      try {
+                        const result = await window.confirmationResult.confirm(
+                          value
+                        );
+                        const {
+                          uid,
+                          displayName,
+                          email,
+                          phoneNumber: phone,
+                        } = result.user;
+
+                        const {
+                          createdAt,
+                          creationTime,
+                          lastLoginAt,
+                          lastSignInTime,
+                        } = result.user.metadata;
+
+                        const { accessToken, expirationTime, refreshToken } =
+                          result.user.stsTokenManager;
+
+                        const user = await getUserInAPI({
+                          uid,
+                          displayName: displayName ? displayName : "",
+                          email: email ? email : "",
+                          phone,
+                          createdAt: String(createdAt),
+                          creationTime,
+                          lastLoginAt: String(lastLoginAt),
+                          lastSignInTime,
+                          accessToken: accessToken ? String(accessToken) : "",
+                          expirationTime: expirationTime
+                            ? String(expirationTime)
+                            : "",
+                          refreshToken: refreshToken,
+                        });
+                        setIsOpen(false);
+                        setUser(user);
+                      } catch (error) {
+                        setOtpError(error.message);
+                        setShowLoader(false);
+                      }
+                      setShowLoader(false);
                     }}
                     inputFocusStyle={{
                       border: "2px solid",
@@ -146,10 +249,13 @@ export default function AuthModal() {
                 </div>
               )}
             </div>
-            <div className="AuthModal__container--resendOtp">
-              <p>Didn't get OTP?</p>
-              <span>Resend OTP</span>
-            </div>
+            {isOtpSent ||
+              (otpError !== "" && (
+                <div className="AuthModal__container--resendOtp">
+                  <p>Didn't get OTP?</p>
+                  <span>Resend OTP</span>
+                </div>
+              ))}
           </div>
         </div>
       )}

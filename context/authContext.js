@@ -17,29 +17,6 @@ export const getUserFromSession = withIronSessionSsr(async ({ req }) => {
 export function AuthProvider({ children, ssrUser, ...props }) {
   const [user, setUser] = React.useState(ssrUser);
 
-  async function login(formData, setSetAuthError) {
-    return fetch("/api/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
-      .then(async (res) => await res.json())
-      .then((res) => {
-        if (res.status === 200) {
-          setSetAuthError({});
-          setUser(res.user);
-        } else {
-          setSetAuthError(res.message);
-        }
-        return res;
-      })
-      .catch((err) => {
-        return err;
-      });
-  }
-
   async function logout() {
     return fetch("/api/auth/logout", {
       method: "GET",
@@ -52,7 +29,7 @@ export function AuthProvider({ children, ssrUser, ...props }) {
 
   const auth = {
     user,
-    login,
+    setUser,
     logout,
     ...props,
   };
