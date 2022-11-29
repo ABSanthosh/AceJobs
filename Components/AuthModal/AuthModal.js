@@ -224,9 +224,12 @@ export default function AuthModal() {
                             : "",
                           refreshToken: refreshToken,
                         });
+
+                        console.log(user);
                         setIsOpen(false);
                         setUser(user);
                       } catch (error) {
+                        console.log(error)
                         setOtpError(error.message);
                         setShowLoader(false);
                       }

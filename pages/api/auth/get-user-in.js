@@ -5,8 +5,12 @@ import { getUserIn } from "../../../services/user.server";
 export default withIronSessionApiRoute(getUserInAPI, ironOptions);
 
 async function getUserInAPI(req, res) {
-  const user = await getUserIn(req.body);
-  req.session.user = user;
-  await req.session.save();
-  res.json({ status: 200, user });
+  try {
+    const user = await getUserIn(req.body);
+    req.session.user = user;
+    await req.session.save();
+    res.json({ status: 200, user });
+  } catch (e) {
+    res.json({ status: 400, message:e });
+  }
 }
