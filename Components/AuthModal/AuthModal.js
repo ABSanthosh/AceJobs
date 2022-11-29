@@ -62,8 +62,6 @@ export default function AuthModal() {
     } else {
       document.getElementsByTagName("body")[0].style.overflow = "auto";
       setHash("");
-      window.location.hash = "";
-      router.replace(window.location.pathname);
     }
   }, [isOpen]);
 

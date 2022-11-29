@@ -64,7 +64,7 @@ export default function Home({ locale }) {
           />
         </div>
       </section>
-      <section className="CategorySection">
+      {/* <section className="CategorySection">
         <div className="CategorySection__content">
           <h2>{t("CategorySection.title")}</h2>
           <div className="CategorySection__content--listing">
@@ -103,7 +103,7 @@ export default function Home({ locale }) {
             />
           </div>
         </div>
-      </section>
+      </section> */}
       <Footer />
     </div>
   );
