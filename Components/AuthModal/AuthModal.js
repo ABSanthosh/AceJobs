@@ -225,11 +225,11 @@ export default function AuthModal() {
                           refreshToken: refreshToken,
                         });
 
-                        console.log(user);
                         setIsOpen(false);
                         setUser(user);
+                        window.location.hash = "";
+                        router.replace(window.location.pathname);
                       } catch (error) {
-                        console.log(error)
                         setOtpError(error.message);
                         setShowLoader(false);
                       }
