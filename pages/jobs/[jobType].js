@@ -16,7 +16,7 @@ export async function getServerSideProps(ctx) {
       postedDate: "7 March",
       postedBy: "Salesforce",
       jobDescription:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ipsum dolor sit",
+        "",
       location: "Ghaziabad, Uttar Pradesh, India",
       type: "skilled",
     },
@@ -25,7 +25,7 @@ export async function getServerSideProps(ctx) {
       postedDate: "7 March",
       postedBy: "Salesforce",
       jobDescription:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ipsum dolor sit",
+        "",
       location: "Ghaziabad, Uttar Pradesh, India",
       type: "skilled",
     },
@@ -34,7 +34,7 @@ export async function getServerSideProps(ctx) {
       postedDate: "7 March",
       postedBy: "Salesforce",
       jobDescription:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ipsum dolor sit",
+        "",
       location: "Ghaziabad, Uttar Pradesh, India",
       type: "skilled",
     },
@@ -44,7 +44,7 @@ export async function getServerSideProps(ctx) {
       postedDate: "7 March",
       postedBy: "Salesforce",
       jobDescription:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ipsum dolor sit",
+        "",
       location: "Ghaziabad, Uttar Pradesh, India",
       type: "semi-skilled",
     },
@@ -53,7 +53,7 @@ export async function getServerSideProps(ctx) {
       postedDate: "7 March",
       postedBy: "Salesforce",
       jobDescription:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ipsum dolor sit",
+        "",
       location: "Ghaziabad, Uttar Pradesh, India",
       type: "semi-skilled",
     },
@@ -62,7 +62,7 @@ export async function getServerSideProps(ctx) {
       postedDate: "7 March",
       postedBy: "Salesforce",
       jobDescription:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ipsum dolor sit",
+        "",
       location: "Ghaziabad, Uttar Pradesh, India",
       type: "semi-skilled",
     },

@@ -53,7 +53,7 @@ export default function Footer() {
                 className="FooterWrapper__right--rowItem"
                 href="mailto:acejobs.com@gmail.com"
               >
-                acejobs.com@gmail.com
+                acejobs.co.in@gmail.com
               </a>
             </li>
             <li className="FooterWrapper__right--RowIcon">

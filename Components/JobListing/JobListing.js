@@ -16,13 +16,13 @@ function JobListing({
         <div className="JobListing__top--row">
           <div className="JobListing__top--Account">
             <span data-icon={String.fromCharCode(59475)} />
-            {postedBy}
+            by {postedBy}
           </div>
           <div className="JobListing__top--Date">{postedDate}</div>
         </div>
         <h2>{jobTitle}</h2>
-        <p className="JobListing__top--location">{location}</p>
         <p className="JobListing__top--desc">{jobDescription}</p>
+        <p className="JobListing__top--location">{location}</p>
       </div>
       <div className="JobListing__bottom">
         <FancyButton
