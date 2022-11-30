@@ -33,11 +33,45 @@
       @include box($height: 70px);
     }
 
+    & > h3 {
+      @include box($height: 40px);
+    }
+
     &--container {
       @include make-flex($dir: row, $just: flex-start);
       @include box($height: auto);
       gap: 20px;
       flex-wrap: wrap;
+    }
+  }
+}
+
+.JobPageModal {
+  @include box();
+
+  &--buttons {
+    @include box($height: auto);
+    @include make-flex($dir: row);
+    list-style: none;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0 40px 0;
+    li {
+      @include box(100px, 40px);
+      border: 1.5px solid #dddddd;
+      font-size: 15px;
+      background-color: #ffffff;
+      border-radius: 4px;
+
+      a {
+        @include box();
+        @include make-flex();
+        padding: 6px 10px;
+
+        &:hover {
+          background-color: #f5f5f5;
+        }
+      }
     }
   }
 }
