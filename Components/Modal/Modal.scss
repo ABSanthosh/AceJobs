@@ -22,15 +22,6 @@
   border: 1px solid #93b8e9;
   background-color: white;
 
-  @include respondAt(400px) {
-    // min-height: 400px;
-  }
-  @include respondAt(555px) {
-    // border-radius: 7px 0 7px 7px;
-  }
-  @include respondAt(620px) {
-    // @include box($height: 420px);
-  }
 
   &--close {
     position: absolute;

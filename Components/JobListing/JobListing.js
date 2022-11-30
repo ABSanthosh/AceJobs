@@ -1,8 +1,15 @@
 import React from "react";
+import Slugify from "../../utils/Slugify";
 import FancyButton from "../FancyButton/FancyButton";
 import "./JobListing.scss";
 
-function JobListing({ postedDate, postedBy, jobTitle, jobDescription, location }) {
+function JobListing({
+  postedDate,
+  postedBy,
+  jobTitle,
+  jobDescription,
+  location,
+}) {
   return (
     <div className="JobListing">
       <div className="JobListing__top">
@@ -24,7 +31,11 @@ function JobListing({ postedDate, postedBy, jobTitle, jobDescription, location }
         >
           Contact
         </FancyButton>
-        <FancyButton style={{ width: "50%", height: "35px", fontSize: "16px" }}>
+        <FancyButton
+          style={{ width: "50%", height: "35px", fontSize: "16px" }}
+          isLink={true}
+          href={`/jobs/apply/${Slugify(jobTitle)}`}
+        >
           Apply
         </FancyButton>
       </div>
