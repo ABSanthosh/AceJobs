@@ -1,0 +1,80 @@
+.EmployerPage {
+  @include make-flex($dir: column, $just: flex-start);
+  @include box($height: unset);
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &__main {
+    @include box(100vw);
+    max-width: 1152px;
+    min-height: 580px;
+    position: relative;
+    margin-top: 123px;
+    margin-bottom: 30px;
+    @include make-flex($just: flex-start, $align: flex-start);
+
+    @include respondAt(1518px) {
+      width: 90vw;
+    }
+
+    @include respondAt(1016px) {
+      // height: 510px;
+    }
+    @include respondAt(840px) {
+      height: auto;
+      min-height: 600px;
+    }
+
+    @include respondAt(915px) {
+      margin-top: 80px;
+    }
+
+    & > h2 {
+      @include box($height: 120px);
+      @include make-flex();
+      font-size: 36px;
+      text-align: center;
+      @include respondAt(630px){
+        font-size: 30px;
+
+      }
+    }
+
+    &--container {
+      @include make-flex($dir: row, $just: flex-start);
+      @include box($height: auto);
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__pricingBoxes {
+    @include make-flex($dir: row);
+    // display: grid;
+    // grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    @include box();
+    flex-wrap: wrap;
+
+    &--col {
+      @include make-flex($align: flex-start);
+      gap: 20px;
+      // background-color: #fcfbfb;
+      background-color: aliceblue;
+      border-radius: 4px;
+      border: 1.5px solid #dddddd;
+      min-width: 325px;
+      @include box(auto, 410px);
+
+      span {
+        @include box($height: 40px);
+        @include make-flex();
+        background-color: rgb(197, 219, 238);
+        font-size: 20px;
+      }
+    }
+
+    @include respondAt(1130px) {
+    }
+  }
+}

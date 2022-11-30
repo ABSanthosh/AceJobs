@@ -67,7 +67,7 @@ function Header() {
         </ul>
         <ul className="HeaderWrapper__MenuList--right">
           <li className="HeaderWrapper__MenuList--item">
-            <a href="/">For Employers</a>
+            <a href="/employer">For Employers</a>
           </li>
           <li className="HeaderWrapper__MenuList--item">
             <SearchBar />
