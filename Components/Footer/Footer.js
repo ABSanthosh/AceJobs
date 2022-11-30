@@ -62,8 +62,8 @@ export default function Footer() {
                 className="FooterWrapper__right--rowImage"
                 src="/Img/phone.svg"
               /> */}
-              <a className="FooterWrapper__right--rowItem" href="tel:">
-                9999999999
+              <a className="FooterWrapper__right--rowItem" href="tel:7065565068">
+              +91 7065565068
               </a>
             </li>
             <li className="FooterWrapper__right--RowIcon">
@@ -86,7 +86,12 @@ export default function Footer() {
                 className="FooterWrapper__right--RowIcon"
                 src="/Img/instagram.svg"
               /> */}
-              <a className="FooterWrapper__right--rowItem" href="/">
+              <a
+                className="FooterWrapper__right--rowItem"
+                href="https://instagram.com/acejobs.co.in?igshid=YmMyMTA2M2Y="
+                target="_blank"
+                referrerPolicy="no-referrer"
+              >
                 Instagram
               </a>
             </li>
