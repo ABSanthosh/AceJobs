@@ -48,7 +48,7 @@
         gap: 20px;
       }
 
-      & > .FancyButton {
+      & > .FancyButton__inverted  {
         display: none;
 
         @include respondAt(1010px) {
