@@ -57,14 +57,14 @@ Resources
 [x] Add "about us" in header
 [x] Remove Subscription Plans
 [x] "Search" to "Search for a job" in search bar
-[ ] Capital S in skilled semi skilled jobs page
+[x] Capital S in skilled semi skilled jobs page
 [x] "Are you an..." to "Are you looking for a..." in role popup
 [x] "Employee" to "Job" and "Employer" to "Worker"
 [x] "Apply for this job: jobname" to "Apply for: jobname"
 [x] add "Apply for" above home buttons
 [x] add a customer review section in home page(probably can reuse old commit)
 [x] add a chat bot panel
-[ ] filter panel like in intern shalla(Refer figma for params) and change layout
+[x] filter panel like in intern shalla(Refer figma for params) and change layout
 
 [ ] add profile logo on signing in in place of login button
 [ ] Employee or employer popup right after language popup
@@ -73,5 +73,4 @@ Resources
 [ ] add a dropdown for jobs(?) in header
 
 ### Changes for roles:
-
 [ ] Home page Apply for / Hire from above skilled buttons

@@ -31,6 +31,8 @@
 
     & > h1 {
       @include box($height: 70px);
+      text-transform: capitalize;
+
     }
 
     & > h3 {
