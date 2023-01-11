@@ -40,19 +40,78 @@
     &--container {
       @include make-flex($dir: row, $align: flex-start, $just: space-between);
       @include box($height: auto);
-      // gap: 20px;
-      // display: grid;
-      // grid-template-columns: 316px 1fr;
-      // position: relative;
+
+      @include respondAt(1010px) {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      & > .FancyButton {
+        display: none;
+
+        @include respondAt(1010px) {
+          display: flex;
+        }
+      }
     }
   }
 
   &__filterBox {
     @include box(316px, calc(100vh - 70px));
     @include make-flex($just: flex-top);
+    @include respondAt(1010px) {
+      display: none;
+    }
+
+    &--activeFilterBox {
+      display: flex;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      @include box();
+      @include make-flex();
+      background: rgba(0, 0, 0, 0.49);
+      backdrop-filter: blur(15px);
+    }
+
+    &--close {
+      position: absolute;
+      top: 8px;
+      right: 22px;
+      font-size: 30px;
+      z-index: 2;
+      cursor: pointer;
+      outline: none;
+      border: none;
+      background-color: white;
+      display: none;
+      &:hover {
+        color: #fe5349;
+      }
+
+      @include respondAt(1010px) {
+        display: flex;
+      }
+
+      @include respondAt(400px) {
+        top: 10px;
+      }
+
+      @include respondAt(555px) {
+        background-color: rgb(255, 255, 255);
+        border-radius: 10px 10px 0 0;
+        padding: 10px;
+        @include box(40px, 40px);
+        @include make-flex();
+        top: -39.5px;
+        right: -1.5px;
+        border: 1px solid #93b8e9;
+        border-bottom: 0;
+      }
+    }
 
     &--contents {
-      // border: 1px solid;
       border: 1px solid #dddddd;
       border-radius: 6px;
       padding: 23px;
@@ -60,6 +119,11 @@
       width: 316px;
       @include make-flex($dir: column, $just: flex-start, $align: flex-start);
       gap: 20px;
+      position: relative;
+
+      @include respondAt(555px) {
+        border-radius: 6px 0 6px 6px;
+      }
     }
 
     &--row {
@@ -91,6 +155,11 @@
     gap: 20px;
     @include box(calc(100% - 316px), auto);
     padding-left: 20px;
+
+    @include respondAt(1010px) {
+      width: 100%;
+      padding-left: unset;
+    }
 
     .JobListing {
       flex-grow: 1;

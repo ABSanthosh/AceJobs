@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import StateCity from "../../Components/StateCityDropDown/StateCity";
 import FancyInput from "../../Components/FancyInput/FancyInput";
+import FancyButton from "../../Components/FancyButton/FancyButton";
+import { useMediaQuery } from "react-responsive";
 
 export async function getServerSideProps(ctx) {
   const { jobType, view } = ctx.query;
@@ -53,9 +55,12 @@ export default function JobPage({ jobType, jobs }) {
   const router = useRouter();
   const { query, pathname, asPath } = router;
 
+  const filterToggleQuery = useMediaQuery({ query: "(max-width: 1010px)" });
+
   const [isEmpModalOpen, setIsEmpModalOpen] = useState(
     query.view === undefined
   );
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   useEffect(() => {
     if (query.view === undefined) {
@@ -64,6 +69,7 @@ export default function JobPage({ jobType, jobs }) {
   }, []);
 
   useEffect(() => {
+    if (filterToggleQuery) return;
     window.addEventListener("scroll", () => {
       if (window.scrollY > 150) {
         document.querySelector(".JobPage__filterBox--contents").style = `
@@ -80,6 +86,28 @@ export default function JobPage({ jobType, jobs }) {
       window.removeEventListener("scroll", () => {});
     };
   });
+
+  useEffect(() => {
+    if (isFilterOpen) {
+      document.getElementsByTagName("html")[0].style.overflowY = "hidden";
+    } else {
+      document.getElementsByTagName("html")[0].style.overflowY = "auto";
+    }
+  }, [isFilterOpen]);
+
+  useEffect(() => {
+    if (
+      document.getElementsByClassName(
+        "JobPage__filterBox--activeFilterBox"
+      )[0] &&
+      !filterToggleQuery
+    ) {
+      document.getElementsByTagName("html")[0].style.overflowY = "auto";
+      document
+        .getElementsByClassName("JobPage__filterBox--activeFilterBox")[0]
+        .classList.remove("JobPage__filterBox--activeFilterBox");
+    }
+  }, [filterToggleQuery]);
 
   return (
     <div className="JobPage">
@@ -117,8 +145,31 @@ export default function JobPage({ jobType, jobs }) {
         {query.view === "employee" && <h3>Employees are looking for...</h3>}
         {query.view === "employer" && <h3>Hire a...</h3>}
         <section className="JobPage__main--container">
-          <div className="JobPage__filterBox">
+          <FancyButton
+            onClick={() => setIsFilterOpen(!isFilterOpen)}
+            style={{
+              width: "100%",
+              flexDirection: "row",
+              gap: "10px",
+            }}
+            invertButton={true}
+          >
+            <span data-icon={String.fromCharCode(57682)} />
+            Filter
+          </FancyButton>
+
+          <div
+            className={`JobPage__filterBox JobPage__filterBox${
+              isFilterOpen ? "--activeFilterBox" : ""
+            }`}
+          >
             <div className="JobPage__filterBox--contents">
+              <button
+                className="JobPage__filterBox--close"
+                onClick={() => setIsFilterOpen(false)}
+              >
+                &#10799;
+              </button>
               <h2>Filters</h2>
               <div className="JobPage__filterBox--column">
                 <h3>Experience</h3>
