@@ -5,6 +5,7 @@ import App from "next/app";
 import Head from "next/head";
 import { NextIntlProvider } from "next-intl";
 import LanguageModal from "../Components/LanguageModal/LanguageModal";
+import ChatBot from "../Components/ChatBot/ChatBot";
 
 function MyApp({ Component, pageProps, user }) {
   return (
@@ -17,6 +18,7 @@ function MyApp({ Component, pageProps, user }) {
         </Head>
         <AuthModal />
         <LanguageModal />
+        <ChatBot />
         <Component {...pageProps} />
       </NextIntlProvider>
     </AuthProvider>

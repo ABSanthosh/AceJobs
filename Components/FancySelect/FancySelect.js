@@ -1,10 +1,11 @@
 import "./FancySelect.scss";
 
-function FancySelect({ options, onChange, defaultValue }) {
+function FancySelect({ options, onChange, defaultValue, style }) {
   return (
     <div
       className="FancySelectWrapper  "
       data-icon={String.fromCharCode(58831)}
+      style={style}
     >
       <select
         className="FancySelect"

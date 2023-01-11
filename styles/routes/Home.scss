@@ -101,7 +101,7 @@
         }
       }
       p {
-        color: #a4aaaf;
+        color: #52575a;
         font-size: 18px;
         font-weight: 300;
         @include respondAt(840px) {
@@ -113,7 +113,14 @@
     &__bottom {
       @include make-flex($dir: row, $just: flex-start);
       @include box(100%, auto);
-      gap: 20px;
+      column-gap: 20px;
+      row-gap: 10px;
+      flex-wrap: wrap;
+
+      span {
+        @include box(100%, auto);
+        color: #52575a;
+      }
 
       @include respondAt(840px) {
         justify-content: center;
@@ -128,7 +135,7 @@
     }
   }
 
-  .CategorySection {
+  .TestimonialSection {
     @include box(100vw, auto);
     min-height: 480px;
     @include make-flex();

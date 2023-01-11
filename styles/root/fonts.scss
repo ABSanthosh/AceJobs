@@ -18,12 +18,14 @@
   word-wrap: normal;
   direction: ltr;
   -webkit-font-feature-settings: "liga";
+  font-feature-settings: "liga";
   -webkit-font-smoothing: antialiased;
   color: #fafafa;
   user-select: none;
 
   &::before {
     font: normal normal normal 20px/1 "Icons";
+    font-size: inherit;
     content: attr(data-icon);
   }
 }

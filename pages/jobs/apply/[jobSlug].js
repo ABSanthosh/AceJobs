@@ -17,7 +17,7 @@ export default function ApplyPage({ jobSlug }) {
     <div className="ApplyPage">
       <Header />
       <main className="ApplyPage__main">
-        <h1>Apply for this job: {jobSlug}</h1>
+        <h1>Apply for: {jobSlug}</h1>
         <section className="ApplyPage__main--container">
           <div className="ApplyPage__main--videoResume">
             <p>Upload a Video Resume</p>

@@ -40,6 +40,7 @@ export default function Home({ locale }) {
             </h1>
             <p>{t("HeroSection.description")}</p>
             <div className="HeroSection__bottom">
+              <span>Apply for</span>
               <FancyButton
                 isLink={true}
                 href="/jobs/semi-skilled"
@@ -64,46 +65,38 @@ export default function Home({ locale }) {
           />
         </div>
       </section>
-      {/* <section className="CategorySection">
-        <div className="CategorySection__content">
-          <h2>{t("CategorySection.title")}</h2>
-          <div className="CategorySection__content--listing">
+      <section className="TestimonialSection">
+        <div className="TestimonialSection__content">
+          <h2>Customer Reviews</h2>
+          <div className="TestimonialSection__content--listing">
             <JobCategoryBox
               href="jobs/category/design"
-              title={t("CategorySection.JobCategoryBox.one.title")}
-              subTitle={t("CategorySection.JobCategoryBox.two.listings", {
-                count: 10,
-              })}
+              title={"Testimonial"}
+              subTitle={"From plumber Raj"}
             />
             <JobCategoryBox
               href="jobs/category/design"
-              title={t("CategorySection.JobCategoryBox.two.title")}
-              subTitle={t("CategorySection.JobCategoryBox.two.listings", {
-                count: 10,
-              })}
+              title={"Testimonial"}
+              subTitle={"From Carpenter Kumar"}
             />
             <JobCategoryBox
               href="jobs/category/design"
-              title={t("CategorySection.JobCategoryBox.three.title")}
-              subTitle={t("CategorySection.JobCategoryBox.two.listings", {
-                count: 10,
-              })}
+              title={"Testimonial"}
+              subTitle={"From Electrician Ravi"}
             />
             <JobCategoryBox
               href="jobs/category/design"
-              title={t("CategorySection.JobCategoryBox.four.title")}
-              subTitle={t("CategorySection.JobCategoryBox.two.listings", {
-                count: 10,
-              })}
+              title={"Testimonial"}
+              subTitle={"From Mechanic Ramesh"}
             />
             <JobCategoryBox
-              href="jobs/category"
-              title={t("CategorySection.JobCategoryBox.final.title")}
+              href="jobs/category/design"
               type="find"
+              title="Read More"
             />
           </div>
         </div>
-      </section> */}
+      </section>
       <Footer />
     </div>
   );

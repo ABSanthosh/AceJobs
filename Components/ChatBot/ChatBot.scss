@@ -1,0 +1,29 @@
+.ChatBotWrapper {
+  position: fixed;
+  bottom: 0;
+  right: 20px;
+  z-index: 1000;
+
+  @include box(300px, 40px);
+  border-radius: 6px 6px 0 0;
+
+  background-color: #93b8e9;
+  color: black;
+  cursor: pointer;
+
+  @include respondAt(525px) {
+    display: none;
+  }
+
+  &__header {
+    @include box();
+    @include make-flex($dir: row, $just: flex-start);
+    padding: 0 10px;
+    gap: 10px;
+
+    span {
+      font-size: 22px;
+      // color: black;
+    }
+  }
+}

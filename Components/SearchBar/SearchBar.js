@@ -7,7 +7,7 @@ function SearchBar() {
       <input
         className="SearchBar__input"
         type="text"
-        placeholder={"Search"}
+        placeholder={"Search for a job..."}
       />
     </div>
   );

@@ -38,10 +38,62 @@
     }
 
     &--container {
-      @include make-flex($dir: row, $just: flex-start);
+      @include make-flex($dir: row, $align: flex-start, $just: space-between);
       @include box($height: auto);
+      // gap: 20px;
+      // display: grid;
+      // grid-template-columns: 316px 1fr;
+      // position: relative;
+    }
+  }
+
+  &__filterBox {
+    @include box(316px, calc(100vh - 70px));
+    @include make-flex($just: flex-top);
+
+    &--contents {
+      // border: 1px solid;
+      border: 1px solid #dddddd;
+      border-radius: 6px;
+      padding: 23px;
+      background: #fff;
+      width: 316px;
+      @include make-flex($dir: column, $just: flex-start, $align: flex-start);
       gap: 20px;
-      flex-wrap: wrap;
+    }
+
+    &--row {
+      @include box($height: auto);
+      @include make-flex($dir: row, $just: flex-start);
+      gap: 10px;
+
+      label {
+        user-select: none;
+        cursor: pointer;
+      }
+
+      input[type="checkbox"] {
+        color: #ffffff;
+        @include box(20px, 20px);
+        cursor: pointer;
+      }
+    }
+    &--column {
+      @include box($height: auto);
+      @include make-flex($align: flex-start);
+      gap: 10px;
+    }
+  }
+
+  &__jobListings {
+    @include make-flex($dir: row, $just: flex-start);
+    flex-wrap: wrap;
+    gap: 20px;
+    @include box(calc(100% - 316px), auto);
+    padding-left: 20px;
+
+    .JobListing {
+      flex-grow: 1;
     }
   }
 }
