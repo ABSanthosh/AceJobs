@@ -51,6 +51,7 @@ export async function getServerSideProps(ctx) {
   };
 }
 
+/** @param {import('next').InferGetServerSidePropsType<typeof getServerSideProps> } props */
 export default function JobPage({ jobType, jobs }) {
   const router = useRouter();
   const { query, pathname, asPath } = router;
@@ -79,6 +80,27 @@ export default function JobPage({ jobType, jobs }) {
           `;
       } else {
         document.querySelector(".JobPage__filterBox--contents").style = "";
+      }
+
+      const jobListing = document.querySelector(".JobPage__jobListings");
+      const filter = document.querySelector(".JobPage__filterBox--contents");
+      const filterBox = document.querySelector(".JobPage__filterBox");
+
+      if (
+        jobListing.getBoundingClientRect().bottom - 80 <=
+        filter.offsetHeight
+      ) {
+        filterBox.style.justifyContent = "flex-end";
+        filter.style.position = "relative";
+        filter.style.top = "0";
+      } else if (window.screenY > 150) {
+        filter.style = `
+              position: fixed;
+              top: 70px;
+              margin-top: 10px
+            `;
+      } else {
+        filterBox.style.justifyContent = "";
       }
     });
 

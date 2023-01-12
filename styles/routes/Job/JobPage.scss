@@ -32,7 +32,6 @@
     & > h1 {
       @include box($height: 70px);
       text-transform: capitalize;
-
     }
 
     & > h3 {
@@ -40,15 +39,20 @@
     }
 
     &--container {
-      @include make-flex($dir: row, $align: flex-start, $just: space-between);
+      // @include make-flex($dir: row, $align: flex-start, $just: space-between);
       @include box($height: auto);
 
+      display: grid;
+      grid-template-columns: 316px 1fr;
+
       @include respondAt(1010px) {
-        flex-direction: column;
+        // flex-direction: column;
+        grid-template-columns: 1fr;
+        grid-template-rows: 40px 1fr;
         gap: 20px;
       }
 
-      & > .FancyButton__inverted  {
+      & > .FancyButton__inverted {
         display: none;
 
         @include respondAt(1010px) {
@@ -59,7 +63,7 @@
   }
 
   &__filterBox {
-    @include box(316px, calc(100vh - 70px));
+    @include box(316px, auto);
     @include make-flex($just: flex-top);
     @include respondAt(1010px) {
       display: none;
@@ -155,7 +159,7 @@
     @include make-flex($dir: row, $just: flex-start);
     flex-wrap: wrap;
     gap: 20px;
-    @include box(calc(100% - 316px), auto);
+    @include box(100%, auto);
     padding-left: 20px;
 
     @include respondAt(1010px) {
