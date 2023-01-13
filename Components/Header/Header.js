@@ -88,7 +88,7 @@ function Header({ isSmall = false }) {
             <FancyButton
               style={{ height: "33px" }}
               isLink={true}
-              href={!user ? "#login" : "/my/profile"}
+              href={!user ? "#login" : "/my/dashboard"}
             >
               {user ? "Profile" : "Login"}
             </FancyButton>
