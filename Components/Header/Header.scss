@@ -7,6 +7,11 @@
   position: fixed;
   padding: 0 20px;
 
+  &--small {
+    height: 70px;
+    border-bottom: 1px solid #e7e7e7;
+  }
+
   #NavBarInput,
   .hamButton {
     display: none;
@@ -23,7 +28,7 @@
     @include box(auto, 40px);
     display: none;
     margin-left: 10px;
-    img{
+    img {
       @include box();
     }
     @include respondAt(915px) {

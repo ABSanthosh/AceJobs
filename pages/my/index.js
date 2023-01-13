@@ -11,7 +11,7 @@ export async function getServerSideProps(context) {
   return {
     redirect: {
       permanent: false,
-      destination: "/my/home",
+      destination: "/my/dashboard",
     },
   };
 }

@@ -7,7 +7,7 @@ import FancySelect from "../FancySelect/FancySelect";
 import { useRouter } from "next/router";
 import FancyButton from "../FancyButton/FancyButton";
 
-function Header() {
+function Header({ isSmall = false }) {
   const [navState, setNavState] = useState(false);
   const [hash, setHash] = useState("");
   const { user } = useAuth();
@@ -45,7 +45,7 @@ function Header() {
   });
 
   return (
-    <nav className="HeaderWrapper">
+    <nav className={`HeaderWrapper ${isSmall ? "HeaderWrapper--small" : ""}`}>
       <Link href="/">
         <a className="HeaderWrapper__logo">
           <img src="/Img/logos/logo.svg" />

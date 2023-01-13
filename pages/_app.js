@@ -8,6 +8,7 @@ import LanguageModal from "../Components/LanguageModal/LanguageModal";
 import ChatBot from "../Components/ChatBot/ChatBot";
 
 function MyApp({ Component, pageProps, user }) {
+  const getLayout = Component.getLayout || ((page) => page);
   return (
     <AuthProvider ssrUser={user}>
       <NextIntlProvider messages={pageProps.messages}>
@@ -19,7 +20,7 @@ function MyApp({ Component, pageProps, user }) {
         <AuthModal />
         <LanguageModal />
         <ChatBot />
-        <Component {...pageProps} />
+        {getLayout(<Component {...pageProps} />)}
       </NextIntlProvider>
     </AuthProvider>
   );

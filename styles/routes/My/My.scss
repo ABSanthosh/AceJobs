@@ -1,0 +1,181 @@
+.MyLayout {
+  @include box($height: 100vh);
+  @include make-flex($dir: row, $align: flex-start);
+  overflow-x: auto;
+  &__page {
+    // @include make-flex($dir: column, $just: flex-start);
+    // @include box($height: unset);
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-top: 69px;
+
+    // &--container {
+    @include box(100vw, auto);
+    max-width: 1152px;
+    min-height: 580px;
+    position: relative;
+    margin-top: 50px;
+
+    display: grid;
+    grid-template-columns: 205px 1fr;
+    gap: 50px;
+    @include respondAt(1518px) {
+      width: 90vw;
+    }
+    @include respondAt(1020px) {
+      grid-template-columns: 1fr;
+      //   grid-template-rows: 35px 1fr;
+    }
+    @include respondAt(840px) {
+      height: auto;
+      min-height: 600px;
+    }
+
+    @include respondAt(915px) {
+      margin-top: 30px;
+    }
+    // }
+  }
+
+  &__panel {
+    list-style: none;
+    @include make-flex($dir: column, $align: flex-start, $just: flex-start);
+    gap: 10px;
+
+    &--item,
+    &--activeItem {
+      @include box(100%, 40px);
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      border: 1px solid transparent;
+      text-transform: capitalize;
+
+      &:hover {
+        border: 1px solid #e5e5e5;
+        background-color: #f5f5f5;
+      }
+
+      a {
+        @include box();
+        padding: 0 12px;
+        @include make-flex($dir: row, $align: center, $just: flex-start);
+      }
+    }
+    &--activeItem {
+      border: 1px solid #e5e5e5;
+      background-color: #f5f5f5;
+    }
+
+    @include respondAt(1020px) {
+      display: none;
+    }
+  }
+}
+
+.DashboardMain {
+  @include box();
+  display: grid;
+  grid-template-columns: 440px 1fr;
+
+  @include respondAt(1020px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 35px 1fr;
+    gap: 20px;
+  }
+
+  &__top {
+    display: none;
+    @include respondAt(1020px) {
+      display: block;
+    }
+  }
+
+  &__left {
+    @include box();
+    @include make-flex($just: flex-start, $align: flex-start, $dir: column);
+    gap: 20px;
+
+    &--column {
+      @include box($height: auto);
+      @include make-flex($just: flex-start, $align: flex-start, $dir: row);
+      gap: 10px;
+
+      @include respondAt(1020px) {
+        max-width: 100% !important;
+      }
+    }
+    &--row {
+      @include box($height: auto);
+      @include make-flex($just: flex-start, $align: flex-start, $dir: column);
+      gap: 10px;
+      label {
+        font-family: "Inter", sans-serif;
+        color: black;
+        font-weight: 600;
+        @include make-flex($just: flex-start, $align: center, $dir: row);
+        gap: 3px;
+        span {
+          color: red;
+        }
+
+        i {
+          @include box(auto, 100%);
+          font-size: 13px;
+          color: #a1a1a1;
+        }
+      }
+
+      input,
+      textarea {
+        @include box($height: 32px);
+        max-width: 440px;
+        font-size: 15px;
+        padding: 3px 12px;
+        background-color: #fcfcfc;
+        border: 1px solid #e1e1e1;
+        border-radius: 5px;
+        box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+          rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+
+        &:active,
+        &:focus {
+          outline: none;
+        }
+
+        &:disabled {
+          background-color: #f5f5f5;
+          cursor: not-allowed;
+          color: #a1a1a1;
+        }
+        @include respondAt(1020px) {
+          max-width: 100%;
+        }
+      }
+
+      textarea {
+        height: 100px;
+        padding: 12px;
+      }
+
+      @include respondAt(1020px) {
+        width: 100%;
+      }
+    }
+
+    @include respondAt(1020px) {
+      justify-content: center;
+    }
+  }
+
+  &__right {
+    @include make-flex($just: flex-start);
+    span {
+      color: #a6a6a6;
+      font-size: 200px;
+    }
+    @include respondAt(1020px) {
+      display: none;
+    }
+  }
+}
