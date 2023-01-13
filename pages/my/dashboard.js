@@ -8,7 +8,6 @@ import { useRouter } from "next/router";
 export default function Dashboard() {
   const { user } = useAuth();
   const router = useRouter();
-  console.log(user);
 
   return (
     <div className="DashboardMain">
@@ -26,7 +25,7 @@ export default function Dashboard() {
           onChange={(e) => {
             router.replace(`/my/${e}`);
           }}
-          defaultValue={{ value: "dashboard", label: "Dashboard" }}
+          defaultValue="dashboard"
         />
       </div>
       <div className="DashboardMain__left">

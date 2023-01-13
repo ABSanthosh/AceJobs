@@ -179,3 +179,13 @@
     }
   }
 }
+
+.ApplicationsMain {
+  &__top {
+    display: none;
+
+    @include respondAt(1020px) {
+      display: block;
+    }
+  }
+}

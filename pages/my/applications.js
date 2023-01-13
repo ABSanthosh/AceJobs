@@ -1,9 +1,33 @@
 import "../../styles/routes/My/My.scss";
 import Header from "../../Components/Header/Header";
 import Link from "next/link";
+import FancySelect from "../../Components/FancySelect/FancySelect";
+import { useRouter } from "next/router";
 
 export default function Applications() {
-  return <div className="ApplicationsMain">Applications here</div>;
+  const router = useRouter();
+  return (
+    <div className="ApplicationsMain">
+      <div className="ApplicationsMain__top">
+        <FancySelect
+          options={[
+            { value: "dashboard", label: "Dashboard" },
+            { value: "applications", label: "Applications" },
+          ]}
+          style={{
+            height: "32px",
+            width: "240px",
+            fontSize: "14px",
+          }}
+          onChange={(e) => {
+            router.replace(`/my/${e}`);
+          }}
+          defaultValue="applications"
+        />
+      </div>
+      Hello
+    </div>
+  );
 }
 
 Applications.getLayout = function getLayout(page) {

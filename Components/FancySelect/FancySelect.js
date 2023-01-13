@@ -10,7 +10,8 @@ function FancySelect({ options, onChange, defaultValue, style }) {
       <select
         className="FancySelect"
         onChange={(e) => onChange(e.target.value)}
-        value={defaultValue}
+        // value={defaultValue}
+        defaultValue={defaultValue}
       >
         {options.map((option, index) => (
           <option value={option.value} key={index}>
