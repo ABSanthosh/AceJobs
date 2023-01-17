@@ -7,3 +7,10 @@ export async function getUserIn(data) {
     create: data,
   });
 }
+
+export async function updateUser(data) {
+  return await db.user.update({
+    where: { phone: data.phone },
+    data,
+  });
+}

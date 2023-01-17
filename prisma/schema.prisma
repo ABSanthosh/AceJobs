@@ -22,7 +22,8 @@ model User {
   accessToken    String @db.LongText
   expirationTime String @db.VarChar(100)
   refreshToken   String @db.LongText
-  address        String @db.LongText
-  age            Int
-  occupation     String @db.VarChar(400)
+  address        String @db.LongText 
+  age            Int   
+  occupation     String 
+  workExperience String 
 }

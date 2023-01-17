@@ -4,10 +4,69 @@ import Link from "next/link";
 import useAuth from "../../hooks/useAuth";
 import FancySelect from "../../Components/FancySelect/FancySelect";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import FancyButton from "../../Components/FancyButton/FancyButton";
+import { updateUser } from "../../operations/my.fetch";
+
+export async function getServerSideProps(context) {
+  if (context.req.session.user === undefined) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/#login",
+      },
+    };
+  }
+  return {
+    props: {},
+  };
+}
 
 export default function Dashboard() {
   const { user } = useAuth();
   const router = useRouter();
+
+  const [isSaveButton, setIsSaveButton] = useState(false);
+
+  const [localUserData, setLocalUserData] = useState({
+    displayName: user?.displayName || "",
+    address: user?.address || "",
+    age: user?.age || 0,
+    phone: user?.phone || 0,
+    email: user?.email || "",
+    occupation: user?.occupation || "",
+    workExperience: user?.workExperience || [],
+  });
+
+  useEffect(() => {
+    if (user) {
+      setLocalUserData({
+        displayName: user.displayName,
+        address: user.address,
+        age: user.age,
+        phone: user.phone,
+        email: user.email,
+        occupation: user.occupation,
+        workExperience: user.workExperience,
+      });
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if (
+      localUserData.displayName !== user.displayName ||
+      localUserData.address !== user.address ||
+      localUserData.age !== user.age ||
+      localUserData.phone !== user.phone ||
+      localUserData.email !== user.email ||
+      localUserData.occupation !== user.occupation ||
+      localUserData.workExperience !== user.workExperience
+    ) {
+      setIsSaveButton(true);
+    } else {
+      setIsSaveButton(false);
+    }
+  }, [localUserData]);
 
   return (
     <div className="DashboardMain">
@@ -34,13 +93,30 @@ export default function Dashboard() {
             Name
             <span>*</span>
           </label>
-          <input type="text" defaultValue={user?.displayName} />
+          <input
+            type="text"
+            defaultValue={localUserData?.displayName}
+            onChange={(e) => {
+              setLocalUserData({
+                ...localUserData,
+                displayName: e.target.value,
+              });
+            }}
+          />
         </div>
         <div className="DashboardMain__left--row">
           <label>
             Address<span>*</span>
           </label>
-          <textarea />
+          <textarea
+            defaultValue={localUserData?.address}
+            onChange={(e) => {
+              setLocalUserData({
+                ...localUserData,
+                address: e.target.value,
+              });
+            }}
+          />
         </div>
         <div
           className="DashboardMain__left--column"
@@ -50,11 +126,20 @@ export default function Dashboard() {
             <label>
               Age<span>*</span>
             </label>
-            <input type="number" />
+            <input
+              type="number"
+              defaultValue={localUserData?.age}
+              onChange={(e) => {
+                setLocalUserData({
+                  ...localUserData,
+                  age: parseInt(e.target.value),
+                });
+              }}
+            />
           </div>
           <div className="DashboardMain__left--row">
-            <label>Mobile</label>
-            <input type="tel" value={user?.phone} disabled />
+            <label>phone</label>
+            <input type="tel" value={localUserData?.phone} disabled />
           </div>
         </div>
         <div className="DashboardMain__left--row">
@@ -62,22 +147,65 @@ export default function Dashboard() {
             Email
             <i>(Optional)</i>
           </label>
-          <input type="email" />
+          <input
+            type="email"
+            defaultValue={localUserData?.email}
+            onChange={(e) => {
+              setLocalUserData({
+                ...localUserData,
+                email: e.target.value,
+              });
+            }}
+          />
         </div>
         <div className="DashboardMain__left--row">
           <label>
             Occupation
             <span>*</span>
           </label>
-          <input type="text" />
+          <input
+            type="text"
+            defaultValue={localUserData?.occupation}
+            onChange={(e) => {
+              setLocalUserData({
+                ...localUserData,
+                occupation: e.target.value,
+              });
+            }}
+          />
         </div>
         <div className="DashboardMain__left--row">
           <label>
             Work Experiences
             <i>(Optional)</i>
           </label>
-          <input type="text" />
+          <input
+            type="text"
+            defaultValue={localUserData?.workExperience}
+            onChange={(e) => {
+              setLocalUserData({
+                ...localUserData,
+                workExperience: e.target.value,
+              });
+            }}
+          />
         </div>
+
+        {isSaveButton && (
+          <FancyButton
+            style={{ width: "100%", marginTop: "16px" }}
+            onClick={async () => {
+              await updateUser(localUserData).then((res) => {
+                if (res.status === 200) {
+                  window.alert("User data updated successfully");
+                }
+                setIsSaveButton(false);
+              });
+            }}
+          >
+            Save
+          </FancyButton>
+        )}
       </div>
 
       <div className="DashboardMain__right">

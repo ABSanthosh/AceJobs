@@ -223,6 +223,10 @@ export default function AuthModal() {
                             ? String(expirationTime)
                             : "",
                           refreshToken: refreshToken,
+                          address: "",
+                          age: 0,
+                          occupation: "",
+                          workExperience: "",
                         });
 
                         setIsOpen(false);

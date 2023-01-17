@@ -66,11 +66,11 @@ Resources
 [x] add a chat bot panel
 [x] filter panel like in intern shalla(Refer figma for params) and change layout
 
-[ ] add profile logo on signing in in place of login button
+[x] add profile logo on signing in in place of login button
+[x] Smaller job card(Bruh)
 [ ] Employee or employer popup right after language popup
-[ ] Smaller job card(Bruh)
 [ ] New page to make a detailed resume
 [ ] add a dropdown for jobs(?) in header
+[ ] Home page Apply for / Hire from above skilled buttons
 
 ### Changes for roles:
-[ ] Home page Apply for / Hire from above skilled buttons
