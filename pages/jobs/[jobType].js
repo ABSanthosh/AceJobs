@@ -51,7 +51,6 @@ export async function getServerSideProps(ctx) {
   };
 }
 
-/** @param {import('next').InferGetServerSidePropsType<typeof getServerSideProps> } props */
 export default function JobPage({ jobType, jobs }) {
   const router = useRouter();
   const { query, pathname, asPath } = router;

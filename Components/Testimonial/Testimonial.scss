@@ -1,0 +1,49 @@
+.TestimonialWrapper {
+  @include box(300px, 200px);
+  background-color: white;
+  border-radius: 3px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  position: relative;
+  padding: 20px;
+  flex: 0 0 400px;
+  min-width: 0;
+  @include make-flex($dir: column, $just: flex-start, $align: flex-start);
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  @include respondAt(445px) {
+    flex: 0 0 calc(100% - 10px);
+    width: calc(100% - 10px);
+  }
+
+  img {
+    position: absolute;
+    height: 35px;
+    top: 20px;
+    left: 20px;
+  }
+
+  &__content {
+    @include box();
+    padding-left: 50px;
+    font-size: 18px;
+  }
+
+  &__bottom {
+    @include box(100%, auto);
+    @include make-flex($dir: row, $just: space-between, $align: center);
+
+    &--name {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    &--designation {
+      font-size: 14px;
+      color: #9b9b9b;
+    }
+  }
+}

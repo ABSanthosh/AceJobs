@@ -9,6 +9,11 @@
     @include make-flex($align: flex-start, $just: flex-end);
     gap: 10px;
 
+    i {
+      font-size: 80px;
+      @include box();
+      @include make-flex();
+    }
     span {
       &:first-child {
         font-size: 22px;
@@ -25,7 +30,6 @@
       span {
         font-size: 22px;
         font-weight: 600;
-
       }
       img {
         height: 55px;

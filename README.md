@@ -68,9 +68,13 @@ Resources
 
 [x] add profile logo on signing in in place of login button
 [x] Smaller job card(Bruh)
-[ ] Employee or employer popup right after language popup
-[ ] New page to make a detailed resume
-[ ] add a dropdown for jobs(?) in header
-[ ] Home page Apply for / Hire from above skilled buttons
 
-### Changes for roles:
+
+[x] Customer Reviews => Find a job
+[x] Replace about us with question 
+[x] New Customer Reviews section 
+[ ] Emp form 
+[ ] New page to make a detailed resume
+[ ] Add jobs
+[ ] Video resume buttons
+

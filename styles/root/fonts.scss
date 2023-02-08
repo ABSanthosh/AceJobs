@@ -8,7 +8,7 @@
 }
 
 [data-icon] {
-  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
+  // font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
   font-weight: normal;
   font-style: normal;
   line-height: 1;
@@ -33,4 +33,13 @@
 
 [data-icon][class*="dark"] {
   color: #323a45;
+}
+
+[data-icon][class*="star-empty"] {
+  color: #f9c80e;
+}
+[data-icon][class*="star-fill"] {
+  color: #f9c80e;
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 48;
+  
 }

@@ -64,11 +64,11 @@
     }
 
     &__top {
-      @include make-flex($just: flex-start);
+      @include make-flex($just: space-around);
       @include box($height: auto);
       min-height: 65%;
 
-      gap: 15%;
+      // gap: 15%;
       @include respondAt(1016px) {
         gap: 30px;
         height: auto;
@@ -135,7 +135,7 @@
     }
   }
 
-  .TestimonialSection {
+  .JobsSection {
     @include box(100vw, auto);
     min-height: 480px;
     @include make-flex();
@@ -153,13 +153,48 @@
       }
 
       &--listing {
-        @include box(100%, 250px);
+        @include box();
         @include make-flex($dir: row, $just: flex-start);
         gap: 25px;
         flex-wrap: wrap;
 
         @include respondAt(1090px) {
           height: auto;
+        }
+      }
+    }
+  }
+
+  .ReviewSection {
+    @include box(100vw, auto);
+    min-height: 480px;
+    @include make-flex();
+    background-color: white;
+
+    &__content {
+      @include box();
+      @include make-flex($align: flex-start);
+      max-width: calc(1152px + 40px);
+      gap: 20px;
+      padding: 40px 20px;
+      h2 {
+        font-size: 35px;
+      }
+
+      &--listing {
+        overflow: hidden;
+        @include box(100%, auto);
+      }
+
+      &--listingContainer {
+        display: flex;
+        padding: 20px 0;
+        gap: 30px;
+
+        .TestimonialWrapper {
+          &:last-child {
+            margin-right: 30px;
+          }
         }
       }
     }

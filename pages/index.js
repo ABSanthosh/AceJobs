@@ -2,8 +2,10 @@ import FancyButton from "../Components/FancyButton/FancyButton";
 import Footer from "../Components/Footer/Footer";
 import Header from "../Components/Header/Header";
 import JobCategoryBox from "../Components/JobCategoryBox/JobCategoryBox";
+import Testimonial from "../Components/Testimonial/Testimonial";
 import "../styles/routes/Home.scss";
 import { useTranslations } from "next-intl";
+import useEmblaCarousel from "embla-carousel-react";
 
 export async function getStaticProps({ locale }) {
   return {
@@ -14,8 +16,12 @@ export async function getStaticProps({ locale }) {
   };
 }
 
+/** @param {import('next').InferGetStaticPropsType<typeof getStaticProps> } props */
 export default function Home({ locale }) {
   const t = useTranslations("Home");
+  const [emblaRef] = useEmblaCarousel({
+    loop: true,
+  });
 
   return (
     <div className="LandingPage">
@@ -65,35 +71,80 @@ export default function Home({ locale }) {
           />
         </div>
       </section>
-      <section className="TestimonialSection">
-        <div className="TestimonialSection__content">
-          <h2>Customer Reviews</h2>
-          <div className="TestimonialSection__content--listing">
+      <section className="JobsSection">
+        <div className="JobsSection__content">
+          <h2>Find a Job...</h2>
+          <div className="JobsSection__content--listing">
             <JobCategoryBox
               href="jobs/category/design"
-              title={"Testimonial"}
-              subTitle={"From plumber Raj"}
+              title={"Tutor"}
+              icon={58982}
             />
             <JobCategoryBox
               href="jobs/category/design"
-              title={"Testimonial"}
-              subTitle={"From Carpenter Kumar"}
+              title={"Driver"}
+              icon={58673}
             />
             <JobCategoryBox
               href="jobs/category/design"
-              title={"Testimonial"}
-              subTitle={"From Electrician Ravi"}
+              title={"Personal trainer"}
+              icon={60227}
             />
             <JobCategoryBox
               href="jobs/category/design"
-              title={"Testimonial"}
-              subTitle={"From Mechanic Ramesh"}
+              title={"Caretaker"}
+              icon={58696}
+            />
+            <JobCategoryBox
+              href="jobs/category/design"
+              title={"Cook"}
+              icon={58721}
+            />
+            <JobCategoryBox
+              href="jobs/category/design"
+              title={"Social Media Manager"}
+              icon={60315}
             />
             <JobCategoryBox
               href="jobs/category/design"
               type="find"
-              title="Read More"
+              title="Find More"
             />
+          </div>
+        </div>
+      </section>
+
+      <section className="ReviewSection">
+        <div className="ReviewSection__content">
+          <h2>What our users say...</h2>
+          <div className="ReviewSection__content--listing" ref={emblaRef}>
+            <div className="ReviewSection__content--listingContainer">
+              <Testimonial
+                userName="John Doe"
+                content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed"
+                rating={4}
+              />
+              <Testimonial
+                userName="John Doe"
+                content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed"
+                rating={4}
+              />
+              <Testimonial
+                userName="John Doe"
+                content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed"
+                rating={4}
+              />
+              <Testimonial
+                userName="John Doe"
+                content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed"
+                rating={4}
+              />
+              <Testimonial
+                userName="John Doe"
+                content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed"
+                rating={4}
+              />
+            </div>
           </div>
         </div>
       </section>

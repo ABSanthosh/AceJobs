@@ -1,0 +1,14 @@
+.HelpPage {
+  @include make-flex($dir: column, $just: flex-start);
+  @include box();
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &__container {
+    @include box(100vw, 580px);
+    max-width: 1152px;
+    position: relative;
+    margin-top: 123px;
+    @include make-flex();
+  }
+}

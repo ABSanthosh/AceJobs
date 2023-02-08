@@ -70,7 +70,7 @@
     &--item {
       list-style: none;
       font-weight: 500;
-      color: #b0b6bb;
+      color: #85898d;
       transition: color 0.2s ease-in-out;
 
       &:hover {
@@ -93,7 +93,7 @@
 
     &--left,
     &--right {
-      gap: 20px;
+      gap: 15px;
       font-size: 17px;
       @include box(auto);
       @include make-flex($just: space-between, $dir: row);

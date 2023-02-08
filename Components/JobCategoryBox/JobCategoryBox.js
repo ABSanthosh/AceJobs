@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import "./JobCategoryBox.scss";
 
-function JobCategoryBox({ title, href, subTitle, type = "" }) {
+function JobCategoryBox({ title, href, icon, type = "" }) {
   return (
     <div
       className={`JobCategoryBox JobCategoryBox--${
@@ -13,8 +13,8 @@ function JobCategoryBox({ title, href, subTitle, type = "" }) {
         <a>
           {type !== "find" ? (
             <>
+              <i data-icon={String.fromCharCode(icon)} />
               <span>{title}</span>
-              <span>{subTitle}</span>
             </>
           ) : (
             <>

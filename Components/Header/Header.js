@@ -67,7 +67,7 @@ function Header({ isSmall = false }) {
         </ul>
         <ul className="HeaderWrapper__MenuList--right">
           <li className="HeaderWrapper__MenuList--item">
-            <a href="/about-us">About Us</a>
+            <a href="/about-us">Are you an Employer?</a>
           </li>
           <li className="HeaderWrapper__MenuList--item">
             <SearchBar />
