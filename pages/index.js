@@ -6,18 +6,32 @@ import Testimonial from "../Components/Testimonial/Testimonial";
 import "../styles/routes/Home.scss";
 import { useTranslations } from "next-intl";
 import useEmblaCarousel from "embla-carousel-react";
+import { getJobsByIds } from "../db/jobs.db";
+import { fetchReviews } from "../db/user.db";
 
 export async function getStaticProps({ locale }) {
+  const jobs = await getJobsByIds([
+    "bf1d2ca",
+    "201f3a7",
+    "517242b",
+    "45a1a5e",
+    "85317af",
+    "93e9d1b",
+  ]);
+
+  const reviews = await fetchReviews();
+
   return {
     props: {
       messages: (await import(`../messages/${locale}.json`)).default,
       locale,
+      jobs: JSON.parse(JSON.stringify(jobs)),
+      reviews,
     },
   };
 }
 
-/** @param {import('next').InferGetStaticPropsType<typeof getStaticProps> } props */
-export default function Home({ locale }) {
+export default function Home({ locale, jobs, reviews }) {
   const t = useTranslations("Home");
   const [emblaRef] = useEmblaCarousel({
     loop: true,
@@ -75,36 +89,14 @@ export default function Home({ locale }) {
         <div className="JobsSection__content">
           <h2>Find a Job...</h2>
           <div className="JobsSection__content--listing">
-            <JobCategoryBox
-              href="jobs/category/design"
-              title={"Tutor"}
-              icon={58982}
-            />
-            <JobCategoryBox
-              href="jobs/category/design"
-              title={"Driver"}
-              icon={58673}
-            />
-            <JobCategoryBox
-              href="jobs/category/design"
-              title={"Personal trainer"}
-              icon={60227}
-            />
-            <JobCategoryBox
-              href="jobs/category/design"
-              title={"Caretaker"}
-              icon={58696}
-            />
-            <JobCategoryBox
-              href="jobs/category/design"
-              title={"Cook"}
-              icon={58721}
-            />
-            <JobCategoryBox
-              href="jobs/category/design"
-              title={"Social Media Manager"}
-              icon={60315}
-            />
+            {jobs.map((job) => (
+              <JobCategoryBox
+                key={job.id}
+                href={`/jobs/apply/${job.id}`}
+                title={job.title}
+                icon={parseInt(job.icon)}
+              />
+            ))}
             <JobCategoryBox
               href="jobs/category/design"
               type="find"
@@ -119,31 +111,14 @@ export default function Home({ locale }) {
           <h2>What our users say...</h2>
           <div className="ReviewSection__content--listing" ref={emblaRef}>
             <div className="ReviewSection__content--listingContainer">
-              <Testimonial
-                userName="John Doe"
-                content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed"
-                rating={4}
-              />
-              <Testimonial
-                userName="John Doe"
-                content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed"
-                rating={4}
-              />
-              <Testimonial
-                userName="John Doe"
-                content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed"
-                rating={4}
-              />
-              <Testimonial
-                userName="John Doe"
-                content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed"
-                rating={4}
-              />
-              <Testimonial
-                userName="John Doe"
-                content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed"
-                rating={4}
-              />
+              {reviews.map((review) => (
+                <Testimonial
+                  key={review.id}
+                  content={review.content}
+                  userName={review.userName}
+                  rating={review.rating}
+                />
+              ))}
             </div>
           </div>
         </div>

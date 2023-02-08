@@ -17,6 +17,7 @@ export async function getServerSideProps(context) {
       },
     };
   }
+  console.log(context.req.session.user);
   return {
     props: {},
   };

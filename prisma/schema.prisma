@@ -26,4 +26,33 @@ model User {
   age            Int
   occupation     String
   workExperience String
+
+  jobs Job[]
+}
+
+model Job {
+  id          String   @id @default(uuid())
+  title       String   @db.VarChar(100)
+  description String   @db.LongText
+  category    Category @default(SEMI)
+  location    String   @db.VarChar(100)
+  salary      String   @db.VarChar(100)
+  createdAt   DateTime @default(now())
+  employerId  String
+  user        User     @relation(fields: [employerId], references: [uid])
+  icon        String   @db.VarChar(100)
+
+  @@index([employerId])
+}
+
+model Reviews {
+  id       String @id @default(uuid())
+  rating   Int
+  userName String
+  content  String @db.LongText
+}
+
+enum Category {
+  SEMI
+  SKILLED
 }

@@ -34,14 +34,53 @@
       @include box($height: 40px);
     }
 
+    &--details {
+      @include box(100%, auto);
+      @include make-flex($dir: column, $just: flex-start, $align: flex-start);
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    &--detailsRow {
+      @include box(100%, auto);
+      @include make-flex($align: flex-start);
+      gap: 10px;
+    }
+
+    &--fakeInput {
+      @include box($height: auto);
+      min-height: 38px;
+      border: none;
+      @include make-flex($align: center, $just: flex-start, $dir: row);
+      outline: none;
+      font-size: 15px;
+      color: #131313;
+      font-family: "Poppins", sans-serif;
+      padding: 10px;
+      border: 1px solid #969191aa;
+      border-radius: 3px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      line-height: 20px;
+      // white-space: nowrap;
+    }
+
     &--container {
-      @include make-flex($just: flex-start);
+      // @include make-flex($just: flex-start);
       @include box($height: auto);
       gap: 20px;
-      flex-wrap: wrap;
+      // flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 20px;
 
       & > span {
         font-size: 30px;
+      }
+
+      @include respondAt(675px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
       }
     }
 

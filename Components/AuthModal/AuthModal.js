@@ -15,6 +15,7 @@ import {
 } from "firebase/auth";
 import useAuth from "../../hooks/useAuth";
 import { getUserInAPI } from "../../operations/auth.fetch";
+import Fetcher from "../../utils/Fetcher";
 
 export default function AuthModal() {
   const [hash, setHash] = useState("");
@@ -230,7 +231,15 @@ export default function AuthModal() {
                         });
 
                         setIsOpen(false);
-                        setUser(user);
+
+                        await Fetcher("/api/auth/set-user", {
+                          method: "POST",
+                          body: user,
+                        }).then((res) => {
+                          if (res.status === 200) {
+                            setUser(res.user);
+                          }
+                        });
                         window.location.hash = "";
                         router.replace(window.location.pathname);
                       } catch (error) {
@@ -254,13 +263,12 @@ export default function AuthModal() {
                 </div>
               )}
             </div>
-            {isOtpSent ||
-              (otpError !== "" && (
-                <div className="AuthModal__container--resendOtp">
-                  <p>Didn't get OTP?</p>
-                  <span>Resend OTP</span>
-                </div>
-              ))}
+            {isOtpSent && (
+              <div className="AuthModal__container--resendOtp">
+                <p>Didn't get OTP?</p>
+                <span>Resend OTP</span>
+              </div>
+            )}
           </div>
         </div>
       )}

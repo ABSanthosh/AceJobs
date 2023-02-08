@@ -10,29 +10,14 @@ import StateCity from "../../Components/StateCityDropDown/StateCity";
 import FancyInput from "../../Components/FancyInput/FancyInput";
 import FancyButton from "../../Components/FancyButton/FancyButton";
 import { useMediaQuery } from "react-responsive";
+import { getJobsByCategory } from "../../db/jobs.db";
 
 export async function getServerSideProps(ctx) {
   const { jobType, view } = ctx.query;
 
-  const jobs = [
-    ...[...Array(20)].map((_, index) => ({
-      title: `Skilled Job ${index}`,
-      postedDate: "7 March",
-      type: "skilled",
-      postedBy: "Salesforce",
-      jobDescription: "",
-      location: "Ghaziabad, Uttar Pradesh, India",
-    })),
-    // ============= Unskilled Jobs =============
-    ...[...Array(20)].map((_, index) => ({
-      title: `Semi-skilled Job ${index}`,
-      postedDate: "7 March",
-      type: "semi-skilled",
-      postedBy: "Salesforce",
-      jobDescription: "",
-      location: "Ghaziabad, Uttar Pradesh, India",
-    })),
-  ];
+  const jobs = await getJobsByCategory(
+    jobType === "semi-skilled" ? "SEMI" : "SKILLED"
+  );
 
   if (view !== undefined && view !== "employee" && view !== "employer") {
     return {
@@ -46,7 +31,7 @@ export async function getServerSideProps(ctx) {
   return {
     props: {
       jobType,
-      jobs,
+      jobs: JSON.parse(JSON.stringify(jobs)),
     },
   };
 }
@@ -235,14 +220,14 @@ export default function JobPage({ jobType, jobs }) {
           </div>
           <div className="JobPage__jobListings">
             {jobs
-              .filter((item) => item.type === jobType)
               .map((item, index) => (
                 <JobListing
                   key={index}
-                  postedDate={item.postedDate}
-                  postedBy={item.postedBy}
+                  id={item.id}
+                  postedDate={new Date(item.createdAt).toDateString()}
+                  postedBy={item.employerId}
                   jobTitle={item.title}
-                  jobDescription={item.jobDescription}
+                  jobDescription={item.description}
                   location={item.location}
                 />
               ))}

@@ -14,3 +14,7 @@ export async function updateUser(data) {
     data,
   });
 }
+
+export async function fetchReviews() {
+  return await db.reviews.findMany();
+}
