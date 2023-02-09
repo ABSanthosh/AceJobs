@@ -54,7 +54,8 @@ export default function Resume({ resume, user }) {
           options={[
             { value: "dashboard", label: "Dashboard" },
             { value: "applications", label: "Applications" },
-            { value: "Resume", label: "Resume" },
+            { value: "resume", label: "Resume" },
+            { value: "video-resume", label: "Video Resume"}
           ]}
           style={{
             height: "32px",
@@ -64,7 +65,7 @@ export default function Resume({ resume, user }) {
           onChange={(e) => {
             router.replace(`/my/${e}`);
           }}
-          defaultValue="Resume"
+          defaultValue="resume"
         />
       </div>
       <div className="ResumeMain__left">
@@ -260,6 +261,9 @@ Resume.getLayout = function getLayout(page) {
           </li>
           <li className="MyLayout__panel--activeItem">
             <Link href="/my/resume">Resume</Link>
+          </li>
+          <li className="MyLayout__panel--item">
+            <Link href="/my/video-resume">Video Resume</Link>
           </li>
         </ul>
         {page}

@@ -16,6 +16,18 @@ export async function upsertResume(data) {
   });
 }
 
+export async function upsertVideoResume(data) {
+  return await db.videoResume.upsert({
+    where: { uid: data.uid },
+    update: data,
+    create: data,
+  });
+}
+
+export async function fetchVideoResumeById(id) {
+  return await db.videoResume.findUnique({ where: { uid: id } });
+}
+
 export async function getUserIn(data) {
   return await db.user.upsert({
     where: { uid: data.uid },

@@ -1,8 +1,3 @@
-:root {
-  --react-chip-input__chip-hover-border-color: none;
-  --react-chip-input__box-shadow-color: none;
-}
-
 .MyLayout {
   @include box($height: 100vh);
   @include make-flex($dir: row, $align: flex-start);
@@ -79,7 +74,8 @@
 }
 
 .DashboardMain,
-.ResumeMain {
+.ResumeMain,
+.VideoResumeMain {
   @include box();
   display: grid;
   grid-template-columns: 440px 1fr;
@@ -186,8 +182,62 @@
   }
 }
 
+.VideoResumeMain {
+  @include box();
+  @include make-flex($just: flex-start, $align: flex-start, $dir: column);
+
+  &__top {
+    display: none;
+    @include respondAt(1020px) {
+      display: block;
+    }
+  }
+
+  &__left {
+    @include box();
+    @include make-flex($just: flex-start, $align: flex-start, $dir: column);
+    gap: 20px;
+
+    &--column {
+      @include box($height: auto);
+      @include make-flex($just: flex-start, $align: flex-start, $dir: row);
+      gap: 10px;
+
+      @include respondAt(1020px) {
+        max-width: 100% !important;
+      }
+    }
+    &--row {
+      @include box($height: auto);
+      @include make-flex($just: flex-start, $align: flex-start, $dir: column);
+      gap: 10px;
+      label {
+        font-family: "Inter", sans-serif;
+        color: black;
+        font-weight: 600;
+        @include make-flex($just: flex-start, $align: center, $dir: row);
+        gap: 3px;
+
+        i {
+          @include box(auto, 100%);
+          font-size: 13px;
+          color: #a1a1a1;
+        }
+      }
+
+      @include respondAt(1020px) {
+        width: 100%;
+      }
+    }
+
+    @include respondAt(1020px) {
+      justify-content: center;
+    }
+  }
+}
+
 .ApplicationsMain,
-.ResumeMain {
+.ResumeMain .VideoResumeMain {
   &__top {
     display: none;
 
@@ -197,7 +247,8 @@
   }
 }
 
-.ResumeMain {
+.ResumeMain,
+.VideoResumeMain {
   &__left {
     margin-bottom: 50px;
   }
