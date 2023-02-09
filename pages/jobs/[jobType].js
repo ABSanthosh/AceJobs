@@ -63,13 +63,15 @@ export default function JobPage({ jobType, jobs }) {
           margin-top: 10px
           `;
       } else {
-        document.querySelector(".JobPage__filterBox--contents").style = "";
+        if (document.querySelector(".JobPage__filterBox--contents"))
+          document.querySelector(".JobPage__filterBox--contents").style = "";
       }
 
       const jobListing = document.querySelector(".JobPage__jobListings");
       const filter = document.querySelector(".JobPage__filterBox--contents");
       const filterBox = document.querySelector(".JobPage__filterBox");
 
+      if (jobListing === null || filter === null || filterBox === null) return;
       if (
         jobListing.getBoundingClientRect().bottom - 80 <=
         filter.offsetHeight
@@ -219,18 +221,17 @@ export default function JobPage({ jobType, jobs }) {
             </div>
           </div>
           <div className="JobPage__jobListings">
-            {jobs
-              .map((item, index) => (
-                <JobListing
-                  key={index}
-                  id={item.id}
-                  postedDate={new Date(item.createdAt).toDateString()}
-                  postedBy={item.employerId}
-                  jobTitle={item.title}
-                  jobDescription={item.description}
-                  location={item.location}
-                />
-              ))}
+            {jobs.map((item, index) => (
+              <JobListing
+                key={index}
+                id={item.id}
+                postedDate={new Date(item.createdAt).toDateString()}
+                postedBy={item.employerId}
+                jobTitle={item.title}
+                jobDescription={item.description}
+                location={item.location}
+              />
+            ))}
           </div>
         </section>
       </main>

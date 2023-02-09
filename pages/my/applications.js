@@ -13,6 +13,7 @@ export default function Applications() {
           options={[
             { value: "dashboard", label: "Dashboard" },
             { value: "applications", label: "Applications" },
+            { value: "Resume", label: "Resume" },
           ]}
           style={{
             height: "32px",
@@ -40,7 +41,10 @@ Applications.getLayout = function getLayout(page) {
             <Link href="/my/dashboard">Dashboard</Link>
           </li>
           <li className="MyLayout__panel--activeItem">
-            <Link href="/my/applications">applications</Link>
+            <Link href="/my/applications">Applications</Link>
+          </li>
+          <li className="MyLayout__panel--item">
+            <Link href="/my/resume">Resume</Link>
           </li>
         </ul>
         {page}

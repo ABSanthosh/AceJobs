@@ -7,6 +7,13 @@
   font-family: "Lato", sans-serif;
 }
 
+[data-mandatory] {
+  &:after {
+    content: "*";
+    color: red;
+  }
+}
+
 ::-webkit-scrollbar {
   background: transparent;
 }

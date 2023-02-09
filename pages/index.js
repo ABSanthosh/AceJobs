@@ -60,20 +60,20 @@ export default function Home({ locale, jobs, reviews }) {
             </h1>
             <p>{t("HeroSection.description")}</p>
             <div className="HeroSection__bottom">
-              <span>Apply for</span>
-              <FancyButton
+              {/* <span>Apply for</span> */}
+              {/* <FancyButton
                 isLink={true}
                 href="/jobs/semi-skilled"
                 style={{ width: "180px" }}
               >
                 {t("HeroSection.FancyButtons.semiSkilled")}
-              </FancyButton>
+              </FancyButton> */}
               <FancyButton
                 isLink={true}
                 href="/jobs/skilled"
                 style={{ width: "180px" }}
               >
-                {t("HeroSection.FancyButtons.skilled")}
+                Learn More
               </FancyButton>
             </div>
           </div>
@@ -95,13 +95,11 @@ export default function Home({ locale, jobs, reviews }) {
                 href={`/jobs/apply/${job.id}`}
                 title={job.title}
                 icon={parseInt(job.icon)}
+                style={{
+                  width: "100%",
+                }}
               />
             ))}
-            <JobCategoryBox
-              href="jobs/category/design"
-              type="find"
-              title="Find More"
-            />
           </div>
         </div>
       </section>

@@ -153,13 +153,22 @@
       }
 
       &--listing {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
         @include box();
-        @include make-flex($dir: row, $just: flex-start);
+        // @include make-flex($dir: row, $just: flex-start);
         gap: 25px;
         flex-wrap: wrap;
 
-        @include respondAt(1090px) {
-          height: auto;
+        @include respondAt(680px) {
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: 1fr 1fr 1fr;
+        }
+
+        @include respondAt(480px) {
+          grid-template-columns: 1fr;
+          grid-template-rows: repeat(6, 1fr);
         }
       }
     }

@@ -27,7 +27,8 @@ model User {
   occupation     String
   workExperience String
 
-  jobs Job[]
+  jobs   Job[]
+  resume Resume[]
 }
 
 model Job {
@@ -50,6 +51,22 @@ model Reviews {
   rating   Int
   userName String
   content  String @db.LongText
+}
+
+model Resume {
+  uid  String @id
+  user User   @relation(fields: [uid], references: [uid])
+
+  name           String @db.VarChar(100)
+  workExperience String @db.LongText
+  hireReason     String @db.LongText
+  hirePast       String @db.LongText
+  phoneNo        String @db.VarChar(100)
+  timeSlots      String @db.VarChar(100)
+  aadhaarNo      String @db.VarChar(100)
+  panNo          String @db.VarChar(100)
+
+  @@index([uid])
 }
 
 enum Category {

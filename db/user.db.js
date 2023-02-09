@@ -1,8 +1,24 @@
 import db from "../lib/prisma";
 
+export async function fetchUserById(id) {
+  return await db.user.findUnique({ where: { uid: id } });
+}
+
+export async function fetchResumeById(id) {
+  return await db.resume.findUnique({ where: { uid: id } });
+}
+
+export async function upsertResume(data) {
+  return await db.resume.upsert({
+    where: { uid: data.uid },
+    update: data,
+    create: data,
+  });
+}
+
 export async function getUserIn(data) {
   return await db.user.upsert({
-    where: { email: data.email },
+    where: { uid: data.uid },
     update: data,
     create: data,
   });

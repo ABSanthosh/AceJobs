@@ -210,7 +210,7 @@ export default function AuthModal() {
                         const { accessToken, expirationTime, refreshToken } =
                           result.user.stsTokenManager;
 
-                        const user = await getUserInAPI({
+                        const response = await getUserInAPI({
                           uid,
                           displayName: displayName ? displayName : "",
                           email: email ? email : "",
@@ -231,15 +231,7 @@ export default function AuthModal() {
                         });
 
                         setIsOpen(false);
-
-                        await Fetcher("/api/auth/set-user", {
-                          method: "POST",
-                          body: user,
-                        }).then((res) => {
-                          if (res.status === 200) {
-                            setUser(res.user);
-                          }
-                        });
+                        setUser(response.user);
                         window.location.hash = "";
                         router.replace(window.location.pathname);
                       } catch (error) {

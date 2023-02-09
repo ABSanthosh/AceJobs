@@ -20,9 +20,9 @@
     border: 1.5px solid #93b8e9;
     background-color: white;
 
-    @include respondAt(400px) {
-      min-height: 400px;
-    }
+    // @include respondAt(400px) {
+    //   min-height: 400px;
+    // }
 
     &--header {
       @include box(100%, 45px);
@@ -70,7 +70,7 @@
       }
     }
 
-    @include respondAt(620px) {
+    @include respondAt(400px) {
       @include box($height: auto);
     }
   }

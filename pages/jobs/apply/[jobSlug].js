@@ -1,8 +1,10 @@
+import { useRouter } from "next/router";
 import FancyButton from "../../../Components/FancyButton/FancyButton";
 import Footer from "../../../Components/Footer/Footer";
 import Header from "../../../Components/Header/Header";
 import { getJobsBySlug } from "../../../db/jobs.db";
 import "../../../styles/routes/Job/ApplyPage.scss";
+import { Cashify } from "../../../utils/Cashify";
 
 export async function getServerSideProps(ctx) {
   const { jobSlug } = ctx.query;
@@ -10,11 +12,14 @@ export async function getServerSideProps(ctx) {
   return {
     props: {
       job: JSON.parse(JSON.stringify(job)),
+      user: ctx.req.session.user === undefined ? null : ctx.req.session.user,
     },
   };
 }
 
-export default function ApplyPage({ job }) {
+export default function ApplyPage({ job, user }) {
+  const router = useRouter();
+
   return (
     <div className="ApplyPage">
       <Header />
@@ -34,7 +39,9 @@ export default function ApplyPage({ job }) {
             </div>
             <div className="ApplyPage__main--detailsRow">
               <label>Salary</label>
-              <p className="ApplyPage__main--fakeInput">{job.salary}</p>
+              <p className="ApplyPage__main--fakeInput">
+                {Cashify(job.salary)}
+              </p>
             </div>
             <div className="ApplyPage__main--detailsRow">
               <label>Created At</label>
@@ -49,7 +56,12 @@ export default function ApplyPage({ job }) {
               <span>Drag and Drop</span> or <span>Click to select</span>
             </div>
             <span>Or</span>
-            <FancyButton>Apply for a detailed resume</FancyButton>
+            <FancyButton
+              isLink={true}
+              href={user === null ? `${router.asPath}#login` : "/my/resume"}
+            >
+              Apply for a detailed resume
+            </FancyButton>
           </div>
         </section>
       </main>

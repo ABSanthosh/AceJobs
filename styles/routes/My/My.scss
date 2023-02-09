@@ -1,3 +1,8 @@
+:root {
+  --react-chip-input__chip-hover-border-color: none;
+  --react-chip-input__box-shadow-color: none;
+}
+
 .MyLayout {
   @include box($height: 100vh);
   @include make-flex($dir: row, $align: flex-start);
@@ -73,7 +78,8 @@
   }
 }
 
-.DashboardMain {
+.DashboardMain,
+.ResumeMain {
   @include box();
   display: grid;
   grid-template-columns: 440px 1fr;
@@ -180,12 +186,19 @@
   }
 }
 
-.ApplicationsMain {
+.ApplicationsMain,
+.ResumeMain {
   &__top {
     display: none;
 
     @include respondAt(1020px) {
       display: block;
     }
+  }
+}
+
+.ResumeMain {
+  &__left {
+    margin-bottom: 50px;
   }
 }

@@ -11,6 +11,6 @@ async function getUserInAPI(req, res) {
     await req.session.save();
     res.json({ status: 200, user });
   } catch (e) {
-    res.json({ status: 400, message:e });
+    res.json({ status: 400, message: e });
   }
 }

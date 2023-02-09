@@ -2,12 +2,13 @@ import Link from "next/link";
 import React from "react";
 import "./JobCategoryBox.scss";
 
-function JobCategoryBox({ title, href, icon, type = "" }) {
+function JobCategoryBox({ title, href, icon, type = "", style }) {
   return (
     <div
       className={`JobCategoryBox JobCategoryBox--${
         type === "find" ? "find" : "active"
       }`}
+      style={style}
     >
       <Link href={href}>
         <a>

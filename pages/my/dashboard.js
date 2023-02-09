@@ -1,12 +1,12 @@
 import "../../styles/routes/My/My.scss";
 import Header from "../../Components/Header/Header";
 import Link from "next/link";
-import useAuth from "../../hooks/useAuth";
 import FancySelect from "../../Components/FancySelect/FancySelect";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import FancyButton from "../../Components/FancyButton/FancyButton";
 import { updateUser } from "../../operations/my.fetch";
+import { fetchUserById } from "../../db/user.db";
 
 export async function getServerSideProps(context) {
   if (context.req.session.user === undefined) {
@@ -17,14 +17,15 @@ export async function getServerSideProps(context) {
       },
     };
   }
-  console.log(context.req.session.user);
+
   return {
-    props: {},
+    props: {
+      user: await fetchUserById(context.req.session.user.uid),
+    },
   };
 }
 
-export default function Dashboard() {
-  const { user } = useAuth();
+export default function Dashboard({ user }) {
   const router = useRouter();
 
   const [isSaveButton, setIsSaveButton] = useState(false);
@@ -76,6 +77,7 @@ export default function Dashboard() {
           options={[
             { value: "dashboard", label: "Dashboard" },
             { value: "applications", label: "Applications" },
+            { value: "Resume", label: "Resume" },
           ]}
           style={{
             height: "32px",
@@ -209,9 +211,9 @@ export default function Dashboard() {
         )}
       </div>
 
-      <div className="DashboardMain__right">
+      {/* <div className="DashboardMain__right">
         <span data-icon={String.fromCharCode(59475)} />
-      </div>
+      </div> */}
     </div>
   );
 }
@@ -226,7 +228,10 @@ Dashboard.getLayout = function getLayout(page) {
             <Link href="/my/dashboard">Dashboard</Link>
           </li>
           <li className="MyLayout__panel--item">
-            <Link href="/my/applications">applications</Link>
+            <Link href="/my/applications">Applications</Link>
+          </li>
+          <li className="MyLayout__panel--item">
+            <Link href="/my/resume">Resume</Link>
           </li>
         </ul>
         {page}
