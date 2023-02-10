@@ -8,6 +8,10 @@ export async function fetchResumeById(id) {
   return await db.resume.findUnique({ where: { uid: id } });
 }
 
+export async function addUser(data) {
+  return await db.user.create({ data });
+}
+
 export async function upsertResume(data) {
   return await db.resume.upsert({
     where: { uid: data.uid },
