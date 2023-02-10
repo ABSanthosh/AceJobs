@@ -11,16 +11,16 @@ export async function fetchResumeById(id) {
 export async function upsertResume(data) {
   return await db.resume.upsert({
     where: { uid: data.uid },
-    update: data,
     create: data,
+    update: data,
   });
 }
 
 export async function upsertVideoResume(data) {
   return await db.videoResume.upsert({
     where: { uid: data.uid },
-    update: data,
     create: data,
+    update: data,
   });
 }
 
@@ -31,8 +31,8 @@ export async function fetchVideoResumeById(id) {
 export async function getUserIn(data) {
   return await db.user.upsert({
     where: { uid: data.uid },
-    update: data,
     create: data,
+    update: data,
   });
 }
 
