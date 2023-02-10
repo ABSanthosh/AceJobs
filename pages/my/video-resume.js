@@ -44,11 +44,26 @@ export default function VideoResume({ user, videoResume }) {
 
   useEffect(() => {
     setVideoData({
-      name: nanoid(),
-      workExperience: nanoid(),
-      expectedSalary: nanoid(),
-      phoneNo: nanoid(),
-      timeSlots: nanoid(),
+      name:
+        videoResume !== null && videoResume.name !== ""
+          ? videoResume.name
+          : nanoid(),
+      workExperience:
+        videoResume !== null && videoResume.workExperience !== ""
+          ? videoResume.workExperience
+          : nanoid(),
+      expectedSalary:
+        videoResume !== null && videoResume.expectedSalary !== ""
+          ? videoResume.expectedSalary
+          : nanoid(),
+      phoneNo:
+        videoResume !== null && videoResume.phoneNo !== ""
+          ? videoResume.phoneNo
+          : nanoid(),
+      timeSlots:
+        videoResume !== null && videoResume.timeSlots !== ""
+          ? videoResume.timeSlots
+          : nanoid(),
     });
   }, []);
 
@@ -79,28 +94,19 @@ export default function VideoResume({ user, videoResume }) {
           <div className="VideoResumeMain__left--row">
             <label data-mandatory>Name</label>
             <VideoRecorder
-              videoId={
-                videoResume?.name && videoResume?.name !== ""
-                  ? videoResume.name
-                  : videoData.name
-              }
+              videoId={videoData.name}
               userId={user.uid}
               type="name"
-              isFetchable={videoResume?.name !== ""}
+              isFetchable={videoResume !== null && videoResume.name !== ""}
             />
           </div>
           <div className="VideoResumeMain__left--row">
             <label data-mandatory>Work Experience</label>
             <VideoRecorder
-              videoId={
-                videoResume?.workExperience &&
-                videoResume?.workExperience !== ""
-                  ? videoResume.workExperience
-                  : videoData.workExperience
-              }
+              videoId={videoData.workExperience}
               userId={user.uid}
               type="workExperience"
-              isFetchable={videoResume?.workExperience !== ""}
+              isFetchable={videoResume !== null && videoResume.workExperience !== ""}
             />
           </div>
 
@@ -109,13 +115,8 @@ export default function VideoResume({ user, videoResume }) {
             <VideoRecorder
               userId={user.uid}
               type="expectedSalary"
-              isFetchable={videoResume?.expectedSalary !== ""}
-              videoId={
-                videoResume?.expectedSalary &&
-                videoResume?.expectedSalary !== ""
-                  ? videoResume.expectedSalary
-                  : videoData.expectedSalary
-              }
+              isFetchable={videoResume !== null && videoResume.expectedSalary !== ""}
+              videoId={videoData.expectedSalary}
             />
           </div>
           <div className="VideoResumeMain__left--row">
@@ -123,12 +124,8 @@ export default function VideoResume({ user, videoResume }) {
             <VideoRecorder
               userId={user.uid}
               type="phoneNo"
-              isFetchable={videoResume?.phoneNo !== ""}
-              videoId={
-                videoResume?.phoneNo && videoResume?.phoneNo !== ""
-                  ? videoResume.phoneNo
-                  : videoData.phoneNo
-              }
+              isFetchable={videoResume !== null && videoResume.phoneNo !== ""}
+              videoId={videoData.phoneNo}
             />
           </div>
           <div className="VideoResumeMain__left--row">
@@ -136,12 +133,8 @@ export default function VideoResume({ user, videoResume }) {
             <VideoRecorder
               userId={user.uid}
               type="timeSlots"
-              isFetchable={videoResume?.timeSlots !== ""}
-              videoId={
-                videoResume?.timeSlots && videoResume?.timeSlots !== ""
-                  ? videoResume.timeSlots
-                  : videoData.timeSlots
-              }
+              isFetchable={videoResume !== null && videoResume.timeSlots !== ""}
+              videoId={videoData.timeSlots}
             />
           </div>
         </div>
