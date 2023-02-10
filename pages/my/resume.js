@@ -209,7 +209,7 @@ export default function Resume({ resume, user }) {
               onClick={async () => {
                 if (
                   localResumeData.name === "" ||
-                  localResumeData.workExperience === "" ||
+                  workExperience === [] ||
                   localResumeData.hireReason === "" ||
                   localResumeData.hirePast === "" ||
                   localResumeData.phoneNo === "" ||

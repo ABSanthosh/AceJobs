@@ -32,6 +32,7 @@ export async function getStaticProps({ locale }) {
 }
 
 export default function Home({ locale, jobs, reviews }) {
+  console.log(jobs, reviews)
   const t = useTranslations("Home");
   const [emblaRef] = useEmblaCarousel({
     loop: true,
