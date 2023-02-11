@@ -6,8 +6,13 @@
     @include box();
     padding: 20px;
     color: white;
-    @include make-flex($align: flex-start, $just: flex-end);
+    @include make-flex($just: flex-end);
     gap: 10px;
+
+    img {
+      height: 80%;
+      border-radius: 5px;
+    }
 
     i {
       font-size: 80px;

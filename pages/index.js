@@ -20,6 +20,20 @@ export async function getStaticProps({ locale }) {
   ]);
 
   const reviews = await fetchReviews();
+  
+  // 1	5	Devanshi Puri	Putting together a website is a task, finding the right individual or company is even more complex. Thank you acejobs for help.
+  // 2	3	Sarthak Vivek	Excellent, working with acejobs was great. Thanks to their knowledge and determination our website looks great and functions really good.
+  // 3	4	Sanjana Muthukumaran	Great design team and quick turn around on all projects and request. With their help we have improved our google search results.
+  // 4	5	Tanmay Sachan	Good to work with Acejobs.
+  // 5	5	Kartikeya Rawat	A great platform for part-time jobs.
+  // 6	2	Sanchi Aggarwal	Very useful to find drivers here as there is less availability of so many of them at the same time.
+
+  // insert into Reviews (id, rating, userName, content) values (1, 5, 'Devanshi Puri', 'Putting together a website is a task, finding the right individual or company is even more complex. Thank you acejobs for help.');
+  // insert into Reviews (id, rating, userName, content) values (2, 3, 'Sarthak Vivek', 'Excellent, working with acejobs was great. Thanks to their knowledge and determination our website looks great and functions really good.');
+  // insert into Reviews (id, rating, userName, content) values (3, 4, 'Sanjana Muthukumaran', 'Great design team and quick turn around on all projects and request. With their help we have improved our google search results.');
+  // insert into Reviews (id, rating, userName, content) values (4, 5, 'Tanmay Sachan', 'Good to work with Acejobs.');
+  // insert into Reviews (id, rating, userName, content) values (5, 5, 'Kartikeya Rawat', 'A great platform for part-time jobs.');
+  // insert into Reviews (id, rating, userName, content) values (6, 2, 'Sanchi Aggarwal', 'Very useful to find drivers here as there is less availability of so many of them at the same time.');
 
   return {
     props: {
@@ -89,12 +103,13 @@ export default function Home({ locale, jobs, reviews }) {
         <div className="JobsSection__content">
           <h2>Find a Job...</h2>
           <div className="JobsSection__content--listing">
-            {jobs.map((job) => (
+            {jobs.map((job, index) => (
               <JobCategoryBox
                 key={job.id}
                 href={`/jobs/apply/${job.id}`}
                 title={job.title}
                 icon={parseInt(job.icon)}
+                imageIndex={index}
                 style={{
                   width: "100%",
                 }}

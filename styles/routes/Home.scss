@@ -87,17 +87,17 @@
           text-align: center;
         }
         span {
-          color: #3eab59;
+          color: #93b8e9;
           position: relative;
-          &::after {
-            position: absolute;
-            left: 16px;
-            transform: rotate(354deg);
-            bottom: 3px;
+          // &::after {
+          //   position: absolute;
+          //   left: 16px;
+          //   transform: rotate(354deg);
+          //   bottom: 3px;
 
-            content: url(/Img/HeroUnderline.png);
-            @include box(100px, 30px);
-          }
+          //   content: url(/Img/HeroUnderline.png);
+          //   @include box(100px, 30px);
+          // }
         }
       }
       p {
