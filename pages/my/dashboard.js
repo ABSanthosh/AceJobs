@@ -38,7 +38,7 @@ export default function Dashboard({ user }) {
     phone: user?.phone || 0,
     email: user?.email || "",
     occupation: user?.occupation || "",
-    workExperience: user?.workExperience || [],
+    workExperience: user?.workExperience || "",
   });
 
   useEffect(() => {
