@@ -20,6 +20,7 @@ export async function getStaticProps({ locale }) {
   ]);
 
   const reviews = await fetchReviews();
+  console.log(reviews);
   
   // 1	5	Devanshi Puri	Putting together a website is a task, finding the right individual or company is even more complex. Thank you acejobs for help.
   // 2	3	Sarthak Vivek	Excellent, working with acejobs was great. Thanks to their knowledge and determination our website looks great and functions really good.

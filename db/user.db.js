@@ -48,7 +48,9 @@ export async function updateUser(data) {
 }
 
 export async function fetchReviews() {
-  return await db.reviews.findMany();
+  const reviews = await db.reviews.findMany();
+
+  return reviews;
 }
 
 export async function upsertEmployer(data) {
