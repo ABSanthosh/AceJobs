@@ -11,9 +11,11 @@ async function getUserInAPI(req, res) {
 
   await getUserIn(req.body);
   const user = fetchUserById(req.body.uid);
-  req.session.user = user;
+  console.log(user);
+  console.log(req.body);
+  req.session.user = req.body;
   await req.session.save();
-  res.json({ status: 200, user });
+  res.json({ status: 200, user: req.body });
   // } catch (e) {
   //   res.json({ status: 400, message: e });
   // }
