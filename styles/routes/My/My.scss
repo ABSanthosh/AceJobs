@@ -75,7 +75,8 @@
 
 .DashboardMain,
 .ResumeMain,
-.VideoResumeMain {
+.VideoResumeMain,
+.EmployerDataMain {
   @include box();
   display: grid;
   grid-template-columns: 440px 1fr;
@@ -125,6 +126,33 @@
           @include box(auto, 100%);
           font-size: 13px;
           color: #a1a1a1;
+        }
+      }
+
+      input[type="file"] {
+        button {
+          @include box($height: 32px);
+          max-width: 440px;
+          font-size: 15px;
+          padding: 3px 12px;
+          background-color: #fcfcfc;
+          border: 1px solid #e1e1e1;
+          border-radius: 5px;
+          box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+            rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+            rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+          &:active,
+          &:focus {
+            outline: none;
+          }
+          &:disabled {
+            background-color: #f5f5f5;
+            cursor: not-allowed;
+            color: #a1a1a1;
+          }
+          @include respondAt(1020px) {
+            max-width: 100%;
+          }
         }
       }
 

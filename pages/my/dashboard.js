@@ -233,12 +233,20 @@ Dashboard.getLayout = function getLayout(page) {
           <li className="MyLayout__panel--item">
             <Link href="/my/applications">Applications</Link>
           </li>
-          <li className="MyLayout__panel--item">
-            <Link href="/my/resume">Resume</Link>
-          </li>
-          <li className="MyLayout__panel--item">
-            <Link href="/my/video-resume">Video Resume</Link>
-          </li>
+          {!page.props.user.isEmployer ? (
+            <>
+              <li className="MyLayout__panel--item">
+                <Link href="/my/resume">Resume</Link>
+              </li>
+              <li className="MyLayout__panel--item">
+                <Link href="/my/video-resume">Video Resume</Link>
+              </li>
+            </>
+          ) : (
+            <li className="MyLayout__panel--item">
+              <Link href="/my/employer">Employer</Link>
+            </li>
+          )}
         </ul>
         {page}
       </div>

@@ -17,6 +17,13 @@ export async function getServerSideProps(context) {
         destination: "/#login",
       },
     };
+  } else if (context.req.session.user.isEmployer) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/my/dashboard",
+      },
+    };
   }
 
   return {
@@ -55,7 +62,7 @@ export default function Resume({ resume, user }) {
             { value: "dashboard", label: "Dashboard" },
             { value: "applications", label: "Applications" },
             { value: "resume", label: "Resume" },
-            { value: "video-resume", label: "Video Resume"}
+            { value: "video-resume", label: "Video Resume" },
           ]}
           style={{
             height: "32px",

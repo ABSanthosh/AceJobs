@@ -3,6 +3,24 @@ import Header from "../../Components/Header/Header";
 import Link from "next/link";
 import FancySelect from "../../Components/FancySelect/FancySelect";
 import { useRouter } from "next/router";
+import { fetchUserById } from "../../db/user.db";
+
+export async function getServerSideProps(context) {
+  if (context.req.session.user === undefined) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/#login",
+      },
+    };
+  }
+
+  return {
+    props: {
+      user: await fetchUserById(context.req.session.user.uid),
+    },
+  };
+}
 
 export default function Applications() {
   const router = useRouter();
@@ -44,12 +62,20 @@ Applications.getLayout = function getLayout(page) {
           <li className="MyLayout__panel--activeItem">
             <Link href="/my/applications">Applications</Link>
           </li>
-          <li className="MyLayout__panel--item">
-            <Link href="/my/resume">Resume</Link>
-          </li>
-          <li className="MyLayout__panel--item">
-            <Link href="/my/video-resume">Video Resume</Link>
-          </li>
+          {!page.props.user.isEmployer ? (
+            <>
+              <li className="MyLayout__panel--item">
+                <Link href="/my/resume">Resume</Link>
+              </li>
+              <li className="MyLayout__panel--item">
+                <Link href="/my/video-resume">Video Resume</Link>
+              </li>
+            </>
+          ) : (
+            <li className="MyLayout__panel--item">
+              <Link href="/my/employer">Employer</Link>
+            </li>
+          )}
         </ul>
         {page}
       </div>

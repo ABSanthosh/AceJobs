@@ -19,6 +19,19 @@ export async function getServerSideProps(ctx) {
     jobType === "semi-skilled" ? "SEMI" : "SKILLED"
   );
 
+  if (
+    ctx.req.session.user !== undefined &&
+    ctx.req.session.user.isEmployer &&
+    view === undefined
+  ) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: `/jobs/${jobType}/?view=employer`,
+      },
+    };
+  }
+
   if (view !== undefined && view !== "employee" && view !== "employer") {
     return {
       redirect: {

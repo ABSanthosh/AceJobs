@@ -11,24 +11,26 @@ datasource db {
 }
 
 model User {
-  uid            String @id @unique
-  displayName    String @default("") @db.VarChar(100)
-  email          String @default("") @db.VarChar(100)
-  phone          String @db.VarChar(100)
-  createdAt      String @db.VarChar(100)
-  creationTime   String @db.VarChar(100)
-  lastLoginAt    String @db.VarChar(100)
-  lastSignInTime String @db.VarChar(100)
-  accessToken    String @db.LongText
-  expirationTime String @db.VarChar(100)
-  refreshToken   String @db.LongText
-  address        String @db.LongText
+  uid            String  @id @unique
+  displayName    String  @default("") @db.VarChar(100)
+  email          String  @default("") @db.VarChar(100)
+  phone          String  @db.VarChar(100)
+  createdAt      String  @db.VarChar(100)
+  creationTime   String  @db.VarChar(100)
+  lastLoginAt    String  @db.VarChar(100)
+  lastSignInTime String  @db.VarChar(100)
+  accessToken    String  @db.LongText
+  expirationTime String  @db.VarChar(100)
+  refreshToken   String  @db.LongText
+  address        String  @db.LongText
   age            Int
   occupation     String
   workExperience String
+  isEmployer     Boolean @default(false)
 
   jobs        Job[]
   resume      Resume[]
+  employer    Employer[]
   videoResume VideoResume[]
 }
 
@@ -79,6 +81,21 @@ model VideoResume {
   expectedSalary String @default("") @db.VarChar(100)
   phoneNo        String @default("") @db.VarChar(100)
   timeSlots      String @default("") @db.VarChar(100)
+
+  @@index([uid])
+}
+
+model Employer {
+  uid  String @id
+  user User   @relation(fields: [uid], references: [uid])
+
+  organizationName    String @db.VarChar(100)
+  organizationAddress String @db.VarChar(100)
+  industry            String @db.VarChar(100)
+  organizationType    String @db.VarChar(100)
+  organizationSize    String @db.VarChar(100)
+  logo                String @db.VarChar(100) @default("")
+  tagLine             String @db.VarChar(100) @default("")
 
   @@index([uid])
 }

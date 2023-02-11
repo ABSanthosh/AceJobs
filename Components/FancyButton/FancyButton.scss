@@ -19,6 +19,16 @@
       color: #15222c;
     }
   }
+
+  &:disabled {
+    background-color: #e5e5e5;
+    color: #b5b5b5;
+    border: 1px solid transparent;
+    cursor: not-allowed;
+    [data-icon] {
+      color: #b5b5b5;
+    }
+  }
 }
 .FancyButton__inverted {
   @include box(auto, 40px);

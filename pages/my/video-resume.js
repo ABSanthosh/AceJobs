@@ -20,6 +20,13 @@ export async function getServerSideProps(context) {
         destination: "/#login",
       },
     };
+  } else if (context.req.session.user.isEmployer) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/my/dashboard",
+      },
+    };
   }
 
   return {
@@ -106,7 +113,9 @@ export default function VideoResume({ user, videoResume }) {
               videoId={videoData.workExperience}
               userId={user.uid}
               type="workExperience"
-              isFetchable={videoResume !== null && videoResume.workExperience !== ""}
+              isFetchable={
+                videoResume !== null && videoResume.workExperience !== ""
+              }
             />
           </div>
 
@@ -115,7 +124,9 @@ export default function VideoResume({ user, videoResume }) {
             <VideoRecorder
               userId={user.uid}
               type="expectedSalary"
-              isFetchable={videoResume !== null && videoResume.expectedSalary !== ""}
+              isFetchable={
+                videoResume !== null && videoResume.expectedSalary !== ""
+              }
               videoId={videoData.expectedSalary}
             />
           </div>

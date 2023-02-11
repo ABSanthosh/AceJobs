@@ -66,9 +66,11 @@ function Header({ isSmall = false }) {
           </li>
         </ul>
         <ul className="HeaderWrapper__MenuList--right">
-          <li className="HeaderWrapper__MenuList--item">
-            <a href="/about-us">Are you an Employer?</a>
-          </li>
+          {(!user || !user.isEmployer) && (
+            <li className="HeaderWrapper__MenuList--item">
+              <a href="/my/employer">Are you an Employer?</a>
+            </li>
+          )}
           <li className="HeaderWrapper__MenuList--item">
             <SearchBar />
           </li>

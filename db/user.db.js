@@ -50,3 +50,15 @@ export async function updateUser(data) {
 export async function fetchReviews() {
   return await db.reviews.findMany();
 }
+
+export async function upsertEmployer(data) {
+  return await db.employer.upsert({
+    where: { uid: data.uid },
+    create: data,
+    update: data,
+  });
+}
+
+export async function fetchEmployerById(id) {
+  return await db.employer.findUnique({ where: { uid: id } });
+}
