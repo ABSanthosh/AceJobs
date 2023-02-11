@@ -44,6 +44,7 @@ export default function Dashboard({ user }) {
   useEffect(() => {
     if (user) {
       setLocalUserData({
+        uid: user.uid,
         displayName: user.displayName,
         address: user.address,
         age: user.age,
