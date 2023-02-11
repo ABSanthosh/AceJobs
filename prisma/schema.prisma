@@ -11,10 +11,10 @@ datasource db {
 }
 
 model User {
-  uid            String @id
-  displayName    String @unique @default("") @db.VarChar(100)
-  email          String @unique @default("") @db.VarChar(100)
-  phone          String @unique @db.VarChar(100)
+  uid            String @id @unique
+  displayName    String @default("") @db.VarChar(100)
+  email          String @default("") @db.VarChar(100)
+  phone          String @db.VarChar(100)
   createdAt      String @db.VarChar(100)
   creationTime   String @db.VarChar(100)
   lastLoginAt    String @db.VarChar(100)
@@ -74,11 +74,11 @@ model VideoResume {
   uid  String @id
   user User   @relation(fields: [uid], references: [uid])
 
-  name           String @db.VarChar(100) @default("")
-  workExperience String @db.VarChar(100) @default("")
-  expectedSalary String @db.VarChar(100) @default("")
-  phoneNo        String @db.VarChar(100) @default("")
-  timeSlots      String @db.VarChar(100) @default("")
+  name           String @default("") @db.VarChar(100)
+  workExperience String @default("") @db.VarChar(100)
+  expectedSalary String @default("") @db.VarChar(100)
+  phoneNo        String @default("") @db.VarChar(100)
+  timeSlots      String @default("") @db.VarChar(100)
 
   @@index([uid])
 }
