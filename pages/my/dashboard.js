@@ -31,6 +31,7 @@ export default function Dashboard({ user }) {
   const [isSaveButton, setIsSaveButton] = useState(false);
 
   const [localUserData, setLocalUserData] = useState({
+    uid: user.uid,
     displayName: user?.displayName || "",
     address: user?.address || "",
     age: user?.age || 0,

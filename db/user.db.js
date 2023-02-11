@@ -42,7 +42,7 @@ export async function getUserIn(data) {
 
 export async function updateUser(data) {
   return await db.user.update({
-    where: { phone: data.phone },
+    where: { uid: data.uid },
     data,
   });
 }
