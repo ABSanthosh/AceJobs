@@ -81,7 +81,7 @@ export default function Home({ locale, jobs, reviews }) {
         <div className="HeroSection__right">
           <img
             className="HeroSection__right--heroImage"
-            src="/Img/HeroImage.svg"
+            src="/Img/hero.png"
           />
         </div>
       </section>

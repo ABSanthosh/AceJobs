@@ -6,6 +6,7 @@ import Head from "next/head";
 import { NextIntlProvider } from "next-intl";
 import LanguageModal from "../Components/LanguageModal/LanguageModal";
 import ChatBot from "../Components/ChatBot/ChatBot";
+import NextNProgress from "nextjs-progressbar";
 
 function MyApp({ Component, pageProps, user }) {
   const getLayout = Component.getLayout || ((page) => page);
@@ -20,6 +21,7 @@ function MyApp({ Component, pageProps, user }) {
         <AuthModal />
         <LanguageModal />
         <ChatBot />
+        <NextNProgress color="#ff4f46" height={5} />
         {getLayout(<Component {...pageProps} />)}
       </NextIntlProvider>
     </AuthProvider>
