@@ -156,19 +156,28 @@
   }
 
   &__jobListings {
-    @include make-flex($dir: row, $just: flex-start);
-    flex-wrap: wrap;
+    // @include make-flex($dir: row, $just: flex-start);
+    // flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
     @include box(100%, auto);
     padding-left: 20px;
 
-    @include respondAt(1010px) {
-      width: 100%;
+    @include respondAt(600px) {
+      grid-template-columns: 1fr;
+
       padding-left: unset;
     }
 
-    .JobListing {
-      flex-grow: 1;
+    & > .JobListing {
+      width: 100%;
+      min-width: 260px;
+    }
+
+    @include respondAt(1010px) {
+      width: 100%;
+      padding-left: unset;
     }
   }
 }
@@ -202,3 +211,5 @@
     }
   }
 }
+
+// INSERT INTO `Job` VALUES ('201f3a7','Driver','If you’re looking for the job of a driver, apply here. \\nMention the following (if submitting the video resume):\\n1. Name \\n2. Work Experience\\n3. Expected salary \\n4. Phone number \\n5. Available time slot\\n6. Other conditions','SEMI','Delhi','15000-20000','2023-02-09 02:44:13.147','1','58673'),('45a1a5e','Caretaker','If you’re looking for the job of a caretaker, apply here. \\nMention the following (if submitting the video resume):\\n1. Name \\n2. Work Experience\\n3. Expected salary \\n4. Phone number \\n5. Available time slot\\n6. Other conditions','SEMI','Delhi','17000-22000','2023-02-09 02:44:13.210','1','58696'),('517242b','Personal trainer','If you’re looking for the job of a personal trainer (gym, yoga, etc.), apply here. \\nMention the following (if submitting the video resume):\\n1. Name \\n2. Work Experience\\n3. Expected salary \\n4. Phone number \\n5. Available time slot\\n6. Other conditions','SEMI','Delhi','16500-20000','2023-02-09 02:44:13.177','1','60227'),('85317af','Cook','If you’re looking for the job of a cook, apply here. \\nMention the following (if submitting the video resume):\\n1. Name \\n2. Work Experience\\n3. Expected salary \\n4. Phone number \\n5. Available time slot\\n6. Other conditions','SKILLED','Delhi','3000-7000','2023-02-09 02:44:13.242','1','58721'),('93e9d1b','Social Media Manager','If you’re looking for the job of a social media manager, apply here. \\nMention the following (if submitting the video resume):\\n1. Name \\n2. Work Experience\\n3. Expected salary \\n4. Phone number \\n5. Available time slot\\n6. Other conditions','SKILLED','Delhi','30000-50000','2023-02-09 02:44:13.275','1','60315'),('bf1d2ca','Tutor','If you’re looking for the job of a tutor, apply here. \\nMention the following (if submitting the video resume):\\n1. Name \\n2. Work Experience\\n3. Subjects taught\\n4. Expected salary \\n5. Phone number \\n6. Available time slot\\n7. Other conditions','SKILLED','Delhi','5000-15000','2023-02-09 02:44:13.116','1','58982');

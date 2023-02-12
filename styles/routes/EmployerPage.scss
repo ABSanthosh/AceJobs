@@ -34,9 +34,8 @@
       @include make-flex();
       font-size: 36px;
       text-align: center;
-      @include respondAt(630px){
+      @include respondAt(630px) {
         font-size: 30px;
-
       }
     }
 
@@ -55,6 +54,10 @@
     gap: 20px;
     @include box();
     flex-wrap: wrap;
+
+    img {
+      width: 100%;
+    }
 
     &--col {
       @include make-flex($align: flex-start);

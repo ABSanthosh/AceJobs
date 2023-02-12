@@ -31,7 +31,12 @@ export default function ApplyPage({ job, user }) {
           <div className="ApplyPage__main--details">
             <div className="ApplyPage__main--detailsRow">
               <label>Description</label>
-              <p className="ApplyPage__main--fakeInput">{job.description}</p>
+              <p
+                className="ApplyPage__main--fakeInput"
+                dangerouslySetInnerHTML={{
+                  __html: job.description.replaceAll("\n", "<br/>"),
+                }}
+              />
             </div>
             <div className="ApplyPage__main--detailsRow">
               <label>Location</label>
@@ -40,7 +45,11 @@ export default function ApplyPage({ job, user }) {
             <div className="ApplyPage__main--detailsRow">
               <label>Salary</label>
               <p className="ApplyPage__main--fakeInput">
-                {Cashify(job.salary)}
+                {job.salary
+                  .split("-")
+                  .map((s) => Cashify(s))
+                  .join(" - ")}{" "}
+                per month
               </p>
             </div>
             <div className="ApplyPage__main--detailsRow">

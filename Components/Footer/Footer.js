@@ -25,18 +25,13 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/">
+              <Link href="/team">
                 <a className="FooterWrapper__right--rowItem">Team</a>
               </Link>
             </li>
             <li>
-              <Link href="/">
+              <Link href="/jobs/skilled">
                 <a className="FooterWrapper__right--rowItem">Jobs</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/">
-                <a className="FooterWrapper__right--rowItem">Categories</a>
               </Link>
             </li>
           </ul>
@@ -62,8 +57,11 @@ export default function Footer() {
                 className="FooterWrapper__right--rowImage"
                 src="/Img/phone.svg"
               /> */}
-              <a className="FooterWrapper__right--rowItem" href="tel:7065565068">
-              +91 7065565068
+              <a
+                className="FooterWrapper__right--rowItem"
+                href="tel:7065565068"
+              >
+                +91 7065565068
               </a>
             </li>
             <li className="FooterWrapper__right--RowIcon">
@@ -101,8 +99,13 @@ export default function Footer() {
                 className="FooterWrapper__right--RowIcon"
                 src="/Img/linkedin.svg"
               /> */}
-              <a className="FooterWrapper__right--rowItem" href="/">
-                LinkedIn
+              <a
+                className="FooterWrapper__right--rowItem"
+                href="https://www.youtube.com/channel/UC7H_g-un7thobMDcJ_5eyvA"
+                target="_blank"
+                referrerPolicy="no-referrer"
+              >
+                Youtube
               </a>
             </li>
             <li className="FooterWrapper__right--RowIcon">

@@ -69,6 +69,7 @@ export default function JobPage({ jobType, jobs }) {
   useEffect(() => {
     if (filterToggleQuery) return;
     window.addEventListener("scroll", () => {
+      if (!document.querySelector(".JobPage__filterBox--contents")) return;
       if (window.scrollY > 150) {
         document.querySelector(".JobPage__filterBox--contents").style = `
           position: fixed;
