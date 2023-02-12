@@ -19,7 +19,6 @@ export async function getServerSideProps(ctx) {
 
 export default function ApplyPage({ job, user }) {
   const router = useRouter();
-
   return (
     <div className="ApplyPage">
       <Header />
@@ -34,7 +33,7 @@ export default function ApplyPage({ job, user }) {
               <p
                 className="ApplyPage__main--fakeInput"
                 dangerouslySetInnerHTML={{
-                  __html: job.description.replaceAll("\n", "<br/>"),
+                  __html: job.description.replaceAll("\\n", "<br/>"),
                 }}
               />
             </div>
