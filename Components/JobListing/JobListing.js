@@ -21,7 +21,11 @@ function JobListing({
           <div className="JobListing__top--Date">{postedDate}</div>
         </div>
         <h2>{jobTitle}</h2>
-        <p className="JobListing__top--desc">{jobDescription}</p>
+        <p className="JobListing__top--desc"
+        dangerouslySetInnerHTML={{
+          __html: jobDescription.replaceAll("\\n", "<br/>"),
+        }}
+        />
         <p className="JobListing__top--location">{location}</p>
       </div>
       <div className="JobListing__bottom">
