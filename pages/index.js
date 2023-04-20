@@ -11,12 +11,9 @@ import { fetchReviews } from "../db/user.db";
 
 export async function getStaticProps({ locale }) {
   const jobs = await getJobsByIds([
-    "abcdef",
-    "ghijkl",
-    "mnopqr",
-    "stuvwx",
-    "yzabcd",
-    "efghij",
+    "1a",
+    "1b",
+    "1c",
   ]);
 
   const reviews = await fetchReviews();
