@@ -28,7 +28,7 @@ export default function ApplyPage({ job, user }) {
         </h1>
         <section className="ApplyPage__main--container">
           <div className="ApplyPage__main--details">
-            <div className="ApplyPage__main--detailsRow">
+            {/* <div className="ApplyPage__main--detailsRow">
               <label>Description</label>
               <p
                 className="ApplyPage__main--fakeInput"
@@ -36,6 +36,22 @@ export default function ApplyPage({ job, user }) {
                   __html: job.description.replaceAll("\\n", "<br/>"),
                 }}
               />
+            </div> */}
+            <div className="ApplyPage__main--detailsRow">
+              <label>Name</label>
+              <p className="ApplyPage__main--fakeInput">{job.name}</p>
+            </div>
+            <div className="ApplyPage__main--detailsRow">
+              <label>Work Experience</label>
+              <p className="ApplyPage__main--fakeInput">{job.workExper}</p>
+            </div>
+            <div className="ApplyPage__main--detailsRow">
+              <label>Phone No.</label>
+              <p className="ApplyPage__main--fakeInput">{job.phoneNo}</p>
+            </div>
+            <div className="ApplyPage__main--detailsRow">
+              <label>Available Time Slots</label>
+              <p className="ApplyPage__main--fakeInput">{job.available}</p>
             </div>
             <div className="ApplyPage__main--detailsRow">
               <label>Location</label>
@@ -43,13 +59,11 @@ export default function ApplyPage({ job, user }) {
             </div>
             <div className="ApplyPage__main--detailsRow">
               <label>Salary</label>
-              <p className="ApplyPage__main--fakeInput">
-                {job.salary
-                  .split("-")
-                  .map((s) => Cashify(s))
-                  .join(" - ")}{" "}
-                per month
-              </p>
+              <p className="ApplyPage__main--fakeInput">{job.salary}</p>
+            </div>
+            <div className="ApplyPage__main--detailsRow">
+              <label>Other Conditions</label>
+              <p className="ApplyPage__main--fakeInput">{job.otherCond}</p>
             </div>
             <div className="ApplyPage__main--detailsRow">
               <label>Created At</label>
@@ -59,11 +73,11 @@ export default function ApplyPage({ job, user }) {
             </div>
           </div>
           <div className="ApplyPage__main--videoResume">
-            <p>Upload a Video Resume</p>
+            <p>Upload an Audio Resume</p>
             <div>
               <span>Drag and Drop</span> or <span>Click to select</span>
             </div>
-            <span>Or</span>
+            <span>Or</span> 
             <FancyButton
               isLink={true}
               href={user === null ? `${router.asPath}#login` : "/my/resume"}

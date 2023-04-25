@@ -37,10 +37,14 @@ model User {
 model Job {
   id          String   @id @default(uuid())
   title       String   @db.VarChar(100)
-  description String   @db.LongText
   category    Category @default(SEMI)
+  name        String   @db.VarChar(100)
+  workExper   String   @db.VarChar(300)
+  phoneNo     String   @db.VarChar(10)
+  available   String   @db.VarChar(10)
   location    String   @db.VarChar(100)
-  salary      String   @db.VarChar(100)
+  salary      String   @db.VarChar(100) 
+  otherCond   String   @db.VarChar(300)
   createdAt   DateTime @default(now())
   employerId  String
   user        User     @relation(fields: [employerId], references: [uid])
