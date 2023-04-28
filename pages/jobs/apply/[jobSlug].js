@@ -58,7 +58,7 @@ export default function ApplyPage({ job, user }) {
               <p className="ApplyPage__main--fakeInput">{job.location}</p>
             </div>
             <div className="ApplyPage__main--detailsRow">
-              <label>Salary</label>
+              <label>Expected Salary</label>
               <p className="ApplyPage__main--fakeInput">{job.salary}</p>
             </div>
             <div className="ApplyPage__main--detailsRow">
